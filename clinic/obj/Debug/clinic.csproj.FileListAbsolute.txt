@@ -1,0 +1,17 @@
+F:\Clinic\clinic\clinic\bin\Debug\clinic.exe.config
+F:\Clinic\clinic\clinic\bin\Debug\clinic.exe
+F:\Clinic\clinic\clinic\bin\Debug\clinic.pdb
+F:\Clinic\clinic\clinic\bin\Debug\Dapper.dll
+F:\Clinic\clinic\clinic\bin\Debug\Dapper.xml
+F:\Clinic\clinic\clinic\obj\Debug\clinic.csproj.AssemblyReference.cache
+F:\Clinic\clinic\clinic\obj\Debug\clinic.appiontmentManagement.resources
+F:\Clinic\clinic\clinic\obj\Debug\clinic.Dashboard.resources
+F:\Clinic\clinic\clinic\obj\Debug\clinic.doctorsManagerment.resources
+F:\Clinic\clinic\clinic\obj\Debug\clinic.petientsManagerment.resources
+F:\Clinic\clinic\clinic\obj\Debug\clinic.Properties.Resources.resources
+F:\Clinic\clinic\clinic\obj\Debug\clinic.serviceManagerment.resources
+F:\Clinic\clinic\clinic\obj\Debug\clinic.csproj.GenerateResource.cache
+F:\Clinic\clinic\clinic\obj\Debug\clinic.csproj.CoreCompileInputs.cache
+F:\Clinic\clinic\clinic\obj\Debug\clinic.csproj.Up2Date
+F:\Clinic\clinic\clinic\obj\Debug\clinic.exe
+F:\Clinic\clinic\clinic\obj\Debug\clinic.pdb
