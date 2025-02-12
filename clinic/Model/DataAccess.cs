@@ -149,13 +149,7 @@ namespace clinic.Model
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                string sql = @"
-            UPDATE Appointments
-            SET PatientId = @PatientId, 
-                ServiceId = @ServiceId, 
-                AppointmentDate = @AppointmentDate
-            WHERE AppointmentId = @AppointmentId";
-
+                string sql = "UPDATE appointments  SET PatientId = @PatientId,  ServiceId = @ServiceId, Status = @Status, Note = @Note AppointmentDate = @AppointmentDate WHERE AppointmentId = @AppointmentId";
                 db.Execute(sql, appiontment);
             }
         }
@@ -173,17 +167,17 @@ namespace clinic.Model
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
                 string sql = @"
-            SELECT 
-                a.AppointmentId, 
-                p.PatientName, 
-                s.ServiceName, 
-                d.FirstName + ' ' + d.LastName AS DoctorName, 
-                a.AppointmentDate
+            SELECT a.AppointmentId, a.PatientId, a.DoctorId, a.AppointmentDate, a.Status, a.ServiceId, a.Note,
+                   p.firstName + ' ' + p.lastName AS PatientName, 
+                   d.firstName + ' ' + d.lastName AS DoctorName, 
+                   s.serviceName AS ServiceName
             FROM appointments a
-            JOIN patients p ON a.patientId = p.patientId
-            JOIN services s ON a.serviceId = s.serviceId
-            JOIN doctors d ON s.doctorId = d.doctorId";
-                return db.Query<Appiontment>(sql).ToList();
+            INNER JOIN patients p ON a.PatientId = p.patientId
+            INNER JOIN doctors d ON a.DoctorId = d.doctorId
+            INNER JOIN services s ON a.ServiceId = s.serviceId";
+
+                var result = db.Query<Appiontment>(sql).ToList();
+                return result;
             }
         }
 

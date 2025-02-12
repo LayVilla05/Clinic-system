@@ -42,11 +42,15 @@ namespace clinic
                 var appointments = _dataAccess.GetAppiontments();
                 dataGridViewAppointment.DataSource = null;
                 dataGridViewAppointment.DataSource = appointments;
+                dataGridViewAppointment.Columns["patientId"].Visible = false;
+                dataGridViewAppointment.Columns["doctorId"].Visible = false;
+                dataGridViewAppointment.Columns["serviceId"].Visible = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error loading appiontments: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
         }
         private void LoadDoctorsIntoComboBox()
         {
@@ -54,10 +58,9 @@ namespace clinic
             {
                 List<Doctors> doctors = _dataAccess.GetDoctors();
                 comboBoxDoctor.DataSource = doctors;
-                comboBoxDoctor.DisplayMember = "FirstName"; 
-                //comboBoxDoctor.ValueMember = "DoctorName";
-                comboBoxDoctor.Refresh();
-                
+                comboBoxDoctor.DisplayMember = "FirstName";
+                comboBoxDoctor.ValueMember = "DoctorId";
+                comboBoxDoctor.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -72,55 +75,46 @@ namespace clinic
                 List<Patients> patients = _dataAccess.GetPatients();
                 comboBoxPetient.DataSource = patients;
                 comboBoxPetient.DisplayMember = "FirstName";
-                //comboBoxPetient.ValueMember = "PatientName";
-                comboBoxPetient.Refresh();
-              
+                comboBoxPetient.ValueMember = "PatientId";
+                comboBoxPetient.SelectedIndex = -1;
+
             } catch (Exception ex)
             {
-                MessageBox.Show("Error loading doctors: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loading Patient: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public void LoadServiceIntoComboBox()
         {
-            //try
-            //{
-            //    List<Services> services = _dataAccess.GetServices();
-            //    comboBoxService.DataSource = services;
-            //    comboBoxService.DisplayMember = "ServiceName";
-            //    comboBoxService.ValueMember = "ServiceId";
-            //    comboBoxService.SelectedIndex = -1;
-            //}
-            //catch(Exception ex)
-            //{
-            //    MessageBox.Show("Error loading doctors: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            try
+            {
+                List<Services> services = _dataAccess.GetServices();
+                comboBoxService.DataSource = services;
+                comboBoxService.DisplayMember = "ServiceName";
+                comboBoxService.ValueMember = "ServiceId";
+                comboBoxService.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading doctors: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-            var services = _dataAccess.GetServices();
-            comboBoxService.DataSource = services;
-            comboBoxService.DisplayMember = "ServiceName";
-            comboBoxService.ValueMember = "ServiceName";
-            comboBoxService.Refresh();
         }
         private void dataGridViewAppointment_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridViewAppointment.SelectedRows.Count > 0)
             {
                 var selectedRow = dataGridViewAppointment.SelectedRows[0];
-                comboBoxPetient.SelectedItem = selectedRow.Cells["patientId"].Value?.ToString() ?? "";
-                comboBoxDoctor.SelectedItem = selectedRow.Cells["doctorId"].Value?.ToString() ?? "";
-                comboBoxService.SelectedItem = selectedRow.Cells["serviceId"].Value?.ToString() ?? "";
+                comboBoxPetient.SelectedValue = selectedRow.Cells["patientId"].Value ?? -1;
+                comboBoxDoctor.SelectedValue = selectedRow.Cells["doctorId"].Value ?? -1;
+                comboBoxService.SelectedValue = selectedRow.Cells["serviceId"].Value ?? -1;
                 statusText.Text = selectedRow.Cells["status"].Value?.ToString() ?? "";
                 noteText.Text = selectedRow.Cells["note"].Value?.ToString() ?? "";
                 dtpAppointment.Value = selectedRow.Cells["appointmentDate"].Value != null ? Convert.ToDateTime(selectedRow.Cells["appointmentDate"].Value) : DateTime.Now;
+                foreach (DataGridViewColumn column in dataGridViewAppointment.Columns)
+                {
+                    Console.WriteLine($"Column Name: {column.Name}, Header Text: {column.HeaderText}");
+                }
 
-                if (selectedRow.Cells["patientId"].Value != null)
-                {
-                    comboBoxPetient.SelectedValue = selectedRow.Cells["patientId"].Value;
-                }
-                else
-                {
-                    comboBoxDoctor.SelectedIndex = -1;
-                }
             }
         }
 
@@ -134,15 +128,14 @@ namespace clinic
             }
             var appiontment = new Appiontment
             {
-                ServiceId = comboBoxService.SelectedIndex,
-                PatientId = comboBoxPetient.SelectedIndex,
-                DoctorId = comboBoxDoctor.TabIndex,
+                ServiceId = Convert.ToInt32(comboBoxService.SelectedValue),
+                PatientId = Convert.ToInt32(comboBoxPetient.SelectedValue),
+                DoctorId = Convert.ToInt32(comboBoxDoctor.SelectedValue),
                 AppointmentDate = dtpAppointment.Value,
                 Status = statusText.Text,
                 Note = noteText.Text,
 
             };
-
             try
             {
                 _dataAccess.AdddAppointment(appiontment);
@@ -165,9 +158,9 @@ namespace clinic
                 var appointment = new Appiontment
                 {
                     AppointmentId = AppointmentId,
-                    ServiceId = comboBoxService.SelectedIndex,
-                    PatientId = comboBoxPetient.SelectedIndex,
-                    DoctorId = comboBoxDoctor.TabIndex,
+                    PatientId = Convert.ToInt32(comboBoxPetient.SelectedValue),
+                    ServiceId = Convert.ToInt32(comboBoxService.SelectedValue),
+                    DoctorId = Convert.ToInt32(comboBoxDoctor.SelectedValue),
                     AppointmentDate = dtpAppointment.Value,
                     Status = statusText.Text,
                     Note = noteText.Text,
@@ -240,6 +233,9 @@ namespace clinic
             }
         }
 
-       
+        private void dataGridViewAppointment_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

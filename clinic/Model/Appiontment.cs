@@ -16,7 +16,12 @@ namespace clinic.Model
             public string Status { get; set; }
             public int ServiceId { get; set; }
             public string Note { get; set; }
-        }
+
+        //adding 
+             public string PatientName { get; set; }
+             public string DoctorName { get; set; }
+        public string ServiceName { get; set; }
+    }
 
     
 }

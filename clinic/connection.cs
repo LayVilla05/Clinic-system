@@ -12,7 +12,6 @@ namespace clinic
         public static string Conn(string name)
         {
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
-
         }
     }
 }

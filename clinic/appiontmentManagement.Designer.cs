@@ -51,10 +51,13 @@
             this.appiontmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.appointmentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doctorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.doctorName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serviceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.appointmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.serviceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.note = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppointment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appiontmentBindingSource)).BeginInit();
@@ -157,21 +160,25 @@
             // 
             this.dataGridViewAppointment.AutoGenerateColumns = false;
             this.dataGridViewAppointment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewAppointment.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            this.dataGridViewAppointment.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridViewAppointment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAppointment.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.appointmentId,
             this.patientId,
+            this.patientName,
             this.doctorId,
+            this.doctorName,
+            this.serviceId,
+            this.serviceName,
             this.appointmentDate,
             this.status,
-            this.serviceId,
             this.note});
             this.dataGridViewAppointment.DataSource = this.appiontmentBindingSource;
             this.dataGridViewAppointment.Location = new System.Drawing.Point(753, 202);
             this.dataGridViewAppointment.Name = "dataGridViewAppointment";
-            this.dataGridViewAppointment.Size = new System.Drawing.Size(1032, 263);
+            this.dataGridViewAppointment.Size = new System.Drawing.Size(1140, 263);
             this.dataGridViewAppointment.TabIndex = 13;
+            this.dataGridViewAppointment.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAppointment_CellContentClick);
             // 
             // AddBtn
             // 
@@ -246,11 +253,35 @@
             this.patientId.HeaderText = "PatientId";
             this.patientId.Name = "patientId";
             // 
+            // patientName
+            // 
+            this.patientName.DataPropertyName = "PatientName";
+            this.patientName.HeaderText = "PatientName";
+            this.patientName.Name = "patientName";
+            // 
             // doctorId
             // 
             this.doctorId.DataPropertyName = "DoctorId";
             this.doctorId.HeaderText = "DoctorId";
             this.doctorId.Name = "doctorId";
+            // 
+            // doctorName
+            // 
+            this.doctorName.DataPropertyName = "DoctorName";
+            this.doctorName.HeaderText = "DoctorName";
+            this.doctorName.Name = "doctorName";
+            // 
+            // serviceId
+            // 
+            this.serviceId.DataPropertyName = "ServiceId";
+            this.serviceId.HeaderText = "ServiceId";
+            this.serviceId.Name = "serviceId";
+            // 
+            // serviceName
+            // 
+            this.serviceName.DataPropertyName = "ServiceName";
+            this.serviceName.HeaderText = "ServiceName";
+            this.serviceName.Name = "serviceName";
             // 
             // appointmentDate
             // 
@@ -263,12 +294,6 @@
             this.status.DataPropertyName = "Status";
             this.status.HeaderText = "Status";
             this.status.Name = "status";
-            // 
-            // serviceId
-            // 
-            this.serviceId.DataPropertyName = "ServiceId";
-            this.serviceId.HeaderText = "ServiceId";
-            this.serviceId.Name = "serviceId";
             // 
             // note
             // 
@@ -344,13 +369,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn noteDgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn ServiceIdDgv;
+        private System.Windows.Forms.BindingSource appiontmentBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn appointmentId;
         private System.Windows.Forms.DataGridViewTextBoxColumn patientId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn patientName;
         private System.Windows.Forms.DataGridViewTextBoxColumn doctorId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn doctorName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn serviceId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn serviceName;
         private System.Windows.Forms.DataGridViewTextBoxColumn appointmentDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn serviceId;
         private System.Windows.Forms.DataGridViewTextBoxColumn note;
-        private System.Windows.Forms.BindingSource appiontmentBindingSource;
     }
 }
