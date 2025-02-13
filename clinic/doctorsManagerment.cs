@@ -155,5 +155,13 @@ namespace clinic
             phoneText.Clear();
             chkAvailable.Checked = false;
         }
+
+        private void ExitBtn_Click(object sender, EventArgs e)
+        {
+            Dashboard das = new Dashboard();
+            das.Show();
+            this.Hide();
+
+        }
     }
 }

@@ -70,6 +70,7 @@
       <DependentUpon>doctorsManagerment.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Appiontment.cs" />
+    <Compile Include="Model\PatientServices.cs" />
     <Compile Include="Model\Payment.cs" />
     <Compile Include="Model\Services.cs" />
     <Compile Include="petientsManagerment.cs">

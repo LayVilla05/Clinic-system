@@ -58,6 +58,7 @@
             this.dobDgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ExitBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPatients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientsBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -226,7 +227,7 @@
             this.clearBtn.Location = new System.Drawing.Point(1408, 905);
             this.clearBtn.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.clearBtn.Name = "clearBtn";
-            this.clearBtn.Size = new System.Drawing.Size(341, 74);
+            this.clearBtn.Size = new System.Drawing.Size(216, 74);
             this.clearBtn.TabIndex = 17;
             this.clearBtn.Text = "CLear";
             this.clearBtn.UseVisualStyleBackColor = true;
@@ -338,12 +339,25 @@
             // 
             this.patientsBindingSource.DataSource = typeof(clinic.Model.Patients);
             // 
+            // ExitBtn
+            // 
+            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.ExitBtn.Location = new System.Drawing.Point(1688, 905);
+            this.ExitBtn.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.ExitBtn.Name = "ExitBtn";
+            this.ExitBtn.Size = new System.Drawing.Size(216, 74);
+            this.ExitBtn.TabIndex = 22;
+            this.ExitBtn.Text = "Exit";
+            this.ExitBtn.UseVisualStyleBackColor = true;
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
+            // 
             // petientsManagerment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1920, 1061);
+            this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.dataGridViewPatients);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cmbGender);
@@ -417,6 +431,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn genderDgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn dobDgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneDgv;
+        private System.Windows.Forms.Button ExitBtn;
     }
 }
 

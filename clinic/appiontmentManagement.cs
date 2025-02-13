@@ -237,5 +237,12 @@ namespace clinic
         {
 
         }
+
+        private void ExitBtn_Click(object sender, EventArgs e)
+        {
+            Dashboard dash = new Dashboard();
+            dash.Show();
+            this.Hide();
+        }
     }
 }

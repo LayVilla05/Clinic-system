@@ -24,7 +24,30 @@ namespace clinic
 
         private void AppiontmentBtn_Click(object sender, EventArgs e)
         {
-           
+            appiontmentManagement ap = new appiontmentManagement();   
+            ap.Show();
+            this.Hide();
+        }
+
+        private void ServiceBtn_Click(object sender, EventArgs e)
+        {
+            serviceManagerment ser = new serviceManagerment();
+            ser.Show();
+            this.Hide();
+        }
+
+        private void PatientBtn_Click(object sender, EventArgs e)
+        {
+            petientsManagerment pet = new petientsManagerment();
+            pet.Show();
+            this.Hide();
+        }
+
+        private void DoctorBtn_Click(object sender, EventArgs e)
+        {
+            doctorsManagerment doc = new doctorsManagerment();
+            doc.Show();
+            this.Hide();
         }
     }
 }

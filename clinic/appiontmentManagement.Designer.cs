@@ -48,7 +48,6 @@
             this.ClearBtn = new System.Windows.Forms.Button();
             this.noteText = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.appiontmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.appointmentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +58,8 @@
             this.appointmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.note = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.appiontmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ExitBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppointment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appiontmentBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -237,10 +238,6 @@
             this.label7.TabIndex = 18;
             this.label7.Text = "Note";
             // 
-            // appiontmentBindingSource
-            // 
-            this.appiontmentBindingSource.DataSource = typeof(clinic.Model.Appiontment);
-            // 
             // appointmentId
             // 
             this.appointmentId.DataPropertyName = "AppointmentId";
@@ -301,12 +298,27 @@
             this.note.HeaderText = "Note";
             this.note.Name = "note";
             // 
+            // appiontmentBindingSource
+            // 
+            this.appiontmentBindingSource.DataSource = typeof(clinic.Model.Appiontment);
+            // 
+            // ExitBtn
+            // 
+            this.ExitBtn.Location = new System.Drawing.Point(1034, 797);
+            this.ExitBtn.Name = "ExitBtn";
+            this.ExitBtn.Size = new System.Drawing.Size(144, 46);
+            this.ExitBtn.TabIndex = 20;
+            this.ExitBtn.Text = "Exit";
+            this.ExitBtn.UseVisualStyleBackColor = true;
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
+            // 
             // appiontmentManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1920, 1061);
+            this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.noteText);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.DeleteBtn);
@@ -380,5 +392,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn appointmentDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.DataGridViewTextBoxColumn note;
+        private System.Windows.Forms.Button ExitBtn;
     }
 }

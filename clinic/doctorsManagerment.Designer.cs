@@ -41,17 +41,18 @@
             this.label6 = new System.Windows.Forms.Label();
             this.chkAvailable = new System.Windows.Forms.CheckBox();
             this.dataGridViewDoctors = new System.Windows.Forms.DataGridView();
-            this.addBtn = new System.Windows.Forms.Button();
-            this.updateBtn = new System.Windows.Forms.Button();
-            this.deleteBtn = new System.Windows.Forms.Button();
-            this.clearBtn = new System.Windows.Forms.Button();
-            this.doctorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.doctorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.specializationDgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.isAvailableDgv = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.doctorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.addBtn = new System.Windows.Forms.Button();
+            this.updateBtn = new System.Windows.Forms.Button();
+            this.deleteBtn = new System.Windows.Forms.Button();
+            this.clearBtn = new System.Windows.Forms.Button();
+            this.ExitBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoctors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.doctorsBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -82,7 +83,7 @@
             // 
             this.firstNameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.firstNameText.Location = new System.Drawing.Point(163, 125);
-            this.firstNameText.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.firstNameText.Margin = new System.Windows.Forms.Padding(5);
             this.firstNameText.Name = "firstNameText";
             this.firstNameText.Size = new System.Drawing.Size(517, 29);
             this.firstNameText.TabIndex = 2;
@@ -91,7 +92,7 @@
             // 
             this.lastNameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.lastNameText.Location = new System.Drawing.Point(163, 264);
-            this.lastNameText.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lastNameText.Margin = new System.Windows.Forms.Padding(5);
             this.lastNameText.Name = "lastNameText";
             this.lastNameText.Size = new System.Drawing.Size(517, 29);
             this.lastNameText.TabIndex = 4;
@@ -111,7 +112,7 @@
             // 
             this.specializationText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.specializationText.Location = new System.Drawing.Point(163, 408);
-            this.specializationText.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.specializationText.Margin = new System.Windows.Forms.Padding(5);
             this.specializationText.Name = "specializationText";
             this.specializationText.Size = new System.Drawing.Size(517, 29);
             this.specializationText.TabIndex = 8;
@@ -131,7 +132,7 @@
             // 
             this.phoneText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.phoneText.Location = new System.Drawing.Point(163, 561);
-            this.phoneText.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.phoneText.Margin = new System.Windows.Forms.Padding(5);
             this.phoneText.Name = "phoneText";
             this.phoneText.Size = new System.Drawing.Size(517, 29);
             this.phoneText.TabIndex = 6;
@@ -163,7 +164,7 @@
             this.chkAvailable.AutoSize = true;
             this.chkAvailable.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.chkAvailable.Location = new System.Drawing.Point(163, 719);
-            this.chkAvailable.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.chkAvailable.Margin = new System.Windows.Forms.Padding(5);
             this.chkAvailable.Name = "chkAvailable";
             this.chkAvailable.Size = new System.Drawing.Size(123, 28);
             this.chkAvailable.TabIndex = 10;
@@ -183,62 +184,10 @@
             this.isAvailableDgv});
             this.dataGridViewDoctors.DataSource = this.doctorsBindingSource;
             this.dataGridViewDoctors.Location = new System.Drawing.Point(783, 111);
-            this.dataGridViewDoctors.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dataGridViewDoctors.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridViewDoctors.Name = "dataGridViewDoctors";
             this.dataGridViewDoctors.Size = new System.Drawing.Size(769, 588);
             this.dataGridViewDoctors.TabIndex = 11;
-            // 
-            // addBtn
-            // 
-            this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.addBtn.Location = new System.Drawing.Point(237, 814);
-            this.addBtn.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(204, 69);
-            this.addBtn.TabIndex = 12;
-            this.addBtn.Text = "Add";
-            this.addBtn.UseVisualStyleBackColor = true;
-            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
-            // 
-            // updateBtn
-            // 
-            this.updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.updateBtn.Location = new System.Drawing.Point(530, 814);
-            this.updateBtn.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.updateBtn.Name = "updateBtn";
-            this.updateBtn.Size = new System.Drawing.Size(204, 69);
-            this.updateBtn.TabIndex = 13;
-            this.updateBtn.Text = "Update";
-            this.updateBtn.UseVisualStyleBackColor = true;
-            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
-            // 
-            // deleteBtn
-            // 
-            this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.deleteBtn.Location = new System.Drawing.Point(804, 814);
-            this.deleteBtn.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(204, 69);
-            this.deleteBtn.TabIndex = 14;
-            this.deleteBtn.Text = "Delete";
-            this.deleteBtn.UseVisualStyleBackColor = true;
-            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
-            // 
-            // clearBtn
-            // 
-            this.clearBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.clearBtn.Location = new System.Drawing.Point(1072, 814);
-            this.clearBtn.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.clearBtn.Name = "clearBtn";
-            this.clearBtn.Size = new System.Drawing.Size(204, 69);
-            this.clearBtn.TabIndex = 15;
-            this.clearBtn.Text = "Clear";
-            this.clearBtn.UseVisualStyleBackColor = true;
-            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
-            // 
-            // doctorsBindingSource
-            // 
-            this.doctorsBindingSource.DataSource = typeof(clinic.Model.Doctors);
             // 
             // doctorId
             // 
@@ -281,12 +230,77 @@
             this.isAvailableDgv.HeaderText = "isAvailable";
             this.isAvailableDgv.Name = "isAvailableDgv";
             // 
+            // doctorsBindingSource
+            // 
+            this.doctorsBindingSource.DataSource = typeof(clinic.Model.Doctors);
+            // 
+            // addBtn
+            // 
+            this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.addBtn.Location = new System.Drawing.Point(237, 814);
+            this.addBtn.Margin = new System.Windows.Forms.Padding(5);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(204, 69);
+            this.addBtn.TabIndex = 12;
+            this.addBtn.Text = "Add";
+            this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            // 
+            // updateBtn
+            // 
+            this.updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.updateBtn.Location = new System.Drawing.Point(530, 814);
+            this.updateBtn.Margin = new System.Windows.Forms.Padding(5);
+            this.updateBtn.Name = "updateBtn";
+            this.updateBtn.Size = new System.Drawing.Size(204, 69);
+            this.updateBtn.TabIndex = 13;
+            this.updateBtn.Text = "Update";
+            this.updateBtn.UseVisualStyleBackColor = true;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.deleteBtn.Location = new System.Drawing.Point(804, 814);
+            this.deleteBtn.Margin = new System.Windows.Forms.Padding(5);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(204, 69);
+            this.deleteBtn.TabIndex = 14;
+            this.deleteBtn.Text = "Delete";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
+            // clearBtn
+            // 
+            this.clearBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.clearBtn.Location = new System.Drawing.Point(1072, 814);
+            this.clearBtn.Margin = new System.Windows.Forms.Padding(5);
+            this.clearBtn.Name = "clearBtn";
+            this.clearBtn.Size = new System.Drawing.Size(204, 69);
+            this.clearBtn.TabIndex = 15;
+            this.clearBtn.Text = "Clear";
+            this.clearBtn.UseVisualStyleBackColor = true;
+            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
+            // 
+            // ExitBtn
+            // 
+            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.ExitBtn.Location = new System.Drawing.Point(1329, 814);
+            this.ExitBtn.Margin = new System.Windows.Forms.Padding(5);
+            this.ExitBtn.Name = "ExitBtn";
+            this.ExitBtn.Size = new System.Drawing.Size(204, 69);
+            this.ExitBtn.TabIndex = 16;
+            this.ExitBtn.Text = "Exit";
+            this.ExitBtn.UseVisualStyleBackColor = true;
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
+            // 
             // doctorsManagerment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1587, 917);
             this.ControlBox = false;
+            this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.updateBtn);
@@ -305,7 +319,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "doctorsManagerment";
             this.Text = "dotorsManagerment";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -341,5 +355,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn specializationDgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneDgv;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isAvailableDgv;
+        private System.Windows.Forms.Button ExitBtn;
     }
 }

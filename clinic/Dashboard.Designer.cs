@@ -63,50 +63,53 @@
             // DoctorBtn
             // 
             this.DoctorBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.DoctorBtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.DoctorBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.DoctorBtn.ForeColor = System.Drawing.Color.White;
-            this.DoctorBtn.Location = new System.Drawing.Point(0, 150);
+            this.DoctorBtn.Location = new System.Drawing.Point(0, 377);
             this.DoctorBtn.Name = "DoctorBtn";
+            this.DoctorBtn.Padding = new System.Windows.Forms.Padding(10);
             this.DoctorBtn.Size = new System.Drawing.Size(200, 50);
             this.DoctorBtn.TabIndex = 0;
             this.DoctorBtn.Text = "👨‍⚕️ Doctor";
             this.DoctorBtn.UseVisualStyleBackColor = false;
+            this.DoctorBtn.Click += new System.EventHandler(this.DoctorBtn_Click);
             // 
             // PatientBtn
             // 
             this.PatientBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.PatientBtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.PatientBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.PatientBtn.ForeColor = System.Drawing.Color.White;
-            this.PatientBtn.Location = new System.Drawing.Point(0, 100);
+            this.PatientBtn.Location = new System.Drawing.Point(0, 327);
             this.PatientBtn.Name = "PatientBtn";
+            this.PatientBtn.Padding = new System.Windows.Forms.Padding(10);
             this.PatientBtn.Size = new System.Drawing.Size(200, 50);
             this.PatientBtn.TabIndex = 1;
             this.PatientBtn.Text = "Patients";
             this.PatientBtn.UseVisualStyleBackColor = false;
+            this.PatientBtn.Click += new System.EventHandler(this.PatientBtn_Click);
             // 
             // ServiceBtn
             // 
             this.ServiceBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.ServiceBtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.ServiceBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.ServiceBtn.ForeColor = System.Drawing.Color.White;
-            this.ServiceBtn.Location = new System.Drawing.Point(0, 50);
+            this.ServiceBtn.Location = new System.Drawing.Point(0, 277);
             this.ServiceBtn.Name = "ServiceBtn";
+            this.ServiceBtn.Padding = new System.Windows.Forms.Padding(10);
             this.ServiceBtn.Size = new System.Drawing.Size(200, 50);
             this.ServiceBtn.TabIndex = 2;
             this.ServiceBtn.Text = "Services";
             this.ServiceBtn.UseVisualStyleBackColor = false;
+            this.ServiceBtn.Click += new System.EventHandler(this.ServiceBtn_Click);
             // 
             // AppiontmentBtn
             // 
             this.AppiontmentBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.AppiontmentBtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.AppiontmentBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.AppiontmentBtn.ForeColor = System.Drawing.Color.White;
-            this.AppiontmentBtn.Location = new System.Drawing.Point(0, 0);
+            this.AppiontmentBtn.Location = new System.Drawing.Point(0, 227);
             this.AppiontmentBtn.Name = "AppiontmentBtn";
+            this.AppiontmentBtn.Padding = new System.Windows.Forms.Padding(10);
             this.AppiontmentBtn.Size = new System.Drawing.Size(200, 50);
             this.AppiontmentBtn.TabIndex = 3;
             this.AppiontmentBtn.Text = " 📅 Appointment";

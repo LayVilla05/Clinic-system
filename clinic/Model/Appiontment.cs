@@ -20,7 +20,7 @@ namespace clinic.Model
         //adding 
              public string PatientName { get; set; }
              public string DoctorName { get; set; }
-        public string ServiceName { get; set; }
+            public string ServiceName { get; set; }
     }
 
     
