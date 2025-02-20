@@ -32,3 +32,5 @@ F:\source\Clinic-system\clinic\obj\Debug\clinic.csproj.CoreCompileInputs.cache
 F:\source\Clinic-system\clinic\obj\Debug\clinic.csproj.Up2Date
 F:\source\Clinic-system\clinic\obj\Debug\clinic.exe
 F:\source\Clinic-system\clinic\obj\Debug\clinic.pdb
+F:\source\Clinic-system\clinic\obj\Debug\clinic.LoginForm.resources
+F:\source\Clinic-system\clinic\bin\Debug\Guna.UI2.dll

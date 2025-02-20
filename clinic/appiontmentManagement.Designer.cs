@@ -42,12 +42,6 @@
             this.dtpAppointment = new System.Windows.Forms.DateTimePicker();
             this.comboBoxService = new System.Windows.Forms.ComboBox();
             this.dataGridViewAppointment = new System.Windows.Forms.DataGridView();
-            this.AddBtn = new System.Windows.Forms.Button();
-            this.UpdateBtn = new System.Windows.Forms.Button();
-            this.DeleteBtn = new System.Windows.Forms.Button();
-            this.ClearBtn = new System.Windows.Forms.Button();
-            this.noteText = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.appointmentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +53,12 @@
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.note = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.appiontmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.AddBtn = new System.Windows.Forms.Button();
+            this.UpdateBtn = new System.Windows.Forms.Button();
+            this.DeleteBtn = new System.Windows.Forms.Button();
+            this.ClearBtn = new System.Windows.Forms.Button();
+            this.noteText = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.ExitBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppointment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appiontmentBindingSource)).BeginInit();
@@ -76,7 +76,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(199, 251);
+            this.label2.Location = new System.Drawing.Point(833, 248);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(129, 24);
             this.label2.TabIndex = 1;
@@ -84,7 +84,7 @@
             // 
             // statusText
             // 
-            this.statusText.Location = new System.Drawing.Point(203, 470);
+            this.statusText.Location = new System.Drawing.Point(837, 467);
             this.statusText.Name = "statusText";
             this.statusText.Size = new System.Drawing.Size(341, 29);
             this.statusText.TabIndex = 4;
@@ -92,7 +92,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(199, 430);
+            this.label3.Location = new System.Drawing.Point(833, 427);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 24);
             this.label3.TabIndex = 3;
@@ -101,7 +101,7 @@
             // comboBoxPetient
             // 
             this.comboBoxPetient.FormattingEnabled = true;
-            this.comboBoxPetient.Location = new System.Drawing.Point(203, 202);
+            this.comboBoxPetient.Location = new System.Drawing.Point(837, 199);
             this.comboBoxPetient.Name = "comboBoxPetient";
             this.comboBoxPetient.Size = new System.Drawing.Size(341, 32);
             this.comboBoxPetient.TabIndex = 5;
@@ -109,7 +109,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(198, 340);
+            this.label4.Location = new System.Drawing.Point(832, 337);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(121, 24);
             this.label4.TabIndex = 6;
@@ -118,7 +118,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(199, 165);
+            this.label5.Location = new System.Drawing.Point(833, 162);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(123, 24);
             this.label5.TabIndex = 8;
@@ -127,7 +127,7 @@
             // comboBoxDoctor
             // 
             this.comboBoxDoctor.FormattingEnabled = true;
-            this.comboBoxDoctor.Location = new System.Drawing.Point(202, 377);
+            this.comboBoxDoctor.Location = new System.Drawing.Point(836, 374);
             this.comboBoxDoctor.Name = "comboBoxDoctor";
             this.comboBoxDoctor.Size = new System.Drawing.Size(341, 32);
             this.comboBoxDoctor.TabIndex = 7;
@@ -135,7 +135,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(199, 665);
+            this.label6.Location = new System.Drawing.Point(833, 662);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(160, 24);
             this.label6.TabIndex = 10;
@@ -143,7 +143,7 @@
             // 
             // dtpAppointment
             // 
-            this.dtpAppointment.Location = new System.Drawing.Point(203, 710);
+            this.dtpAppointment.Location = new System.Drawing.Point(837, 707);
             this.dtpAppointment.Name = "dtpAppointment";
             this.dtpAppointment.Size = new System.Drawing.Size(341, 29);
             this.dtpAppointment.TabIndex = 11;
@@ -151,7 +151,7 @@
             // comboBoxService
             // 
             this.comboBoxService.FormattingEnabled = true;
-            this.comboBoxService.Location = new System.Drawing.Point(203, 292);
+            this.comboBoxService.Location = new System.Drawing.Point(837, 289);
             this.comboBoxService.Name = "comboBoxService";
             this.comboBoxService.Size = new System.Drawing.Size(341, 32);
             this.comboBoxService.TabIndex = 12;
@@ -175,68 +175,11 @@
             this.status,
             this.note});
             this.dataGridViewAppointment.DataSource = this.appiontmentBindingSource;
-            this.dataGridViewAppointment.Location = new System.Drawing.Point(753, 202);
+            this.dataGridViewAppointment.Location = new System.Drawing.Point(1311, 522);
             this.dataGridViewAppointment.Name = "dataGridViewAppointment";
-            this.dataGridViewAppointment.Size = new System.Drawing.Size(1140, 263);
+            this.dataGridViewAppointment.Size = new System.Drawing.Size(261, 263);
             this.dataGridViewAppointment.TabIndex = 13;
             this.dataGridViewAppointment.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAppointment_CellContentClick);
-            // 
-            // AddBtn
-            // 
-            this.AddBtn.Location = new System.Drawing.Point(184, 797);
-            this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(144, 46);
-            this.AddBtn.TabIndex = 14;
-            this.AddBtn.Text = "Add";
-            this.AddBtn.UseVisualStyleBackColor = true;
-            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
-            // 
-            // UpdateBtn
-            // 
-            this.UpdateBtn.Location = new System.Drawing.Point(400, 797);
-            this.UpdateBtn.Name = "UpdateBtn";
-            this.UpdateBtn.Size = new System.Drawing.Size(144, 46);
-            this.UpdateBtn.TabIndex = 15;
-            this.UpdateBtn.Text = "Update";
-            this.UpdateBtn.UseVisualStyleBackColor = true;
-            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
-            // 
-            // DeleteBtn
-            // 
-            this.DeleteBtn.Location = new System.Drawing.Point(605, 797);
-            this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.Size = new System.Drawing.Size(144, 46);
-            this.DeleteBtn.TabIndex = 17;
-            this.DeleteBtn.Text = "Delete";
-            this.DeleteBtn.UseVisualStyleBackColor = true;
-            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
-            // 
-            // ClearBtn
-            // 
-            this.ClearBtn.Location = new System.Drawing.Point(802, 797);
-            this.ClearBtn.Name = "ClearBtn";
-            this.ClearBtn.Size = new System.Drawing.Size(144, 46);
-            this.ClearBtn.TabIndex = 16;
-            this.ClearBtn.Text = "Clear";
-            this.ClearBtn.UseVisualStyleBackColor = true;
-            this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
-            // 
-            // noteText
-            // 
-            this.noteText.Location = new System.Drawing.Point(203, 562);
-            this.noteText.Multiline = true;
-            this.noteText.Name = "noteText";
-            this.noteText.Size = new System.Drawing.Size(341, 87);
-            this.noteText.TabIndex = 19;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(199, 522);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(50, 24);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Note";
             // 
             // appointmentId
             // 
@@ -302,6 +245,63 @@
             // 
             this.appiontmentBindingSource.DataSource = typeof(clinic.Model.Appiontment);
             // 
+            // AddBtn
+            // 
+            this.AddBtn.Location = new System.Drawing.Point(184, 797);
+            this.AddBtn.Name = "AddBtn";
+            this.AddBtn.Size = new System.Drawing.Size(144, 46);
+            this.AddBtn.TabIndex = 14;
+            this.AddBtn.Text = "Add";
+            this.AddBtn.UseVisualStyleBackColor = true;
+            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
+            // 
+            // UpdateBtn
+            // 
+            this.UpdateBtn.Location = new System.Drawing.Point(400, 797);
+            this.UpdateBtn.Name = "UpdateBtn";
+            this.UpdateBtn.Size = new System.Drawing.Size(144, 46);
+            this.UpdateBtn.TabIndex = 15;
+            this.UpdateBtn.Text = "Update";
+            this.UpdateBtn.UseVisualStyleBackColor = true;
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
+            // 
+            // DeleteBtn
+            // 
+            this.DeleteBtn.Location = new System.Drawing.Point(605, 797);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Size = new System.Drawing.Size(144, 46);
+            this.DeleteBtn.TabIndex = 17;
+            this.DeleteBtn.Text = "Delete";
+            this.DeleteBtn.UseVisualStyleBackColor = true;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
+            // 
+            // ClearBtn
+            // 
+            this.ClearBtn.Location = new System.Drawing.Point(802, 797);
+            this.ClearBtn.Name = "ClearBtn";
+            this.ClearBtn.Size = new System.Drawing.Size(144, 46);
+            this.ClearBtn.TabIndex = 16;
+            this.ClearBtn.Text = "Clear";
+            this.ClearBtn.UseVisualStyleBackColor = true;
+            this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
+            // 
+            // noteText
+            // 
+            this.noteText.Location = new System.Drawing.Point(837, 559);
+            this.noteText.Multiline = true;
+            this.noteText.Name = "noteText";
+            this.noteText.Size = new System.Drawing.Size(341, 87);
+            this.noteText.TabIndex = 19;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(833, 519);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(50, 24);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Note";
+            // 
             // ExitBtn
             // 
             this.ExitBtn.Location = new System.Drawing.Point(1034, 797);
@@ -317,7 +317,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1920, 1061);
+            this.ClientSize = new System.Drawing.Size(1620, 873);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.noteText);
             this.Controls.Add(this.label7);

@@ -8,11 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace clinic
 {
+    
     public partial class Dashboard : Form
     {
+        private readonly DataAccess _dataAccess = new DataAccess();
         public Dashboard()
         {
             InitializeComponent();
@@ -47,6 +50,13 @@ namespace clinic
         {
             doctorsManagerment doc = new doctorsManagerment();
             doc.Show();
+            this.Hide();
+        }
+
+        private void logoutBtn_Click(object sender, EventArgs e)
+        {
+            LoginForm login = new LoginForm();
+            login.Show();
             this.Hide();
         }
     }

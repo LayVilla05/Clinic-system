@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Microsoft.SqlServer.Server;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -48,6 +49,15 @@ namespace clinic.Model
             {
                 string sql = "SELECT * FROM Patients";
                 return db.Query<Patients>(sql).AsList();
+            }
+        }
+
+        public Dictionary<string , int> GetPatientsByGender()
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "SELTECT COUNT(*) as count from patients GROUP BY Gender";
+                return db.Query<(string Gender, int Count)>(sql).ToDictionary(row => row.Gender, row => row.Count);
             }
         }
 
@@ -149,7 +159,7 @@ namespace clinic.Model
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "UPDATE appointments  SET PatientId = @PatientId,  ServiceId = @ServiceId, Status = @Status, Note = @Note AppointmentDate = @AppointmentDate WHERE AppointmentId = @AppointmentId";
+                string sql = "UPDATE appointments  SET PatientId = @PatientId,  ServiceId = @ServiceId, Status = @Status, Note = @Note, AppointmentDate = @AppointmentDate WHERE AppointmentId = @AppointmentId";
                 db.Execute(sql, appiontment);
             }
         }
