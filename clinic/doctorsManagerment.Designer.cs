@@ -322,7 +322,6 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "doctorsManagerment";
             this.Text = "dotorsManagerment";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoctors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.doctorsBindingSource)).EndInit();
             this.ResumeLayout(false);
