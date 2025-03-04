@@ -64,6 +64,12 @@
     <Compile Include="appiontmentManagement.Designer.cs">
       <DependentUpon>appiontmentManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="AvailableDate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AvailableDate.Designer.cs">
+      <DependentUpon>AvailableDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="connection.cs" />
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
@@ -84,9 +90,11 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Appiontment.cs" />
+    <Compile Include="Model\DoctorAvailable.cs" />
     <Compile Include="Model\PatientServices.cs" />
     <Compile Include="Model\Payment.cs" />
     <Compile Include="Model\Services.cs" />
+    <Compile Include="Model\Staff.cs" />
     <Compile Include="petientsManagerment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,8 +112,17 @@
     <Compile Include="serviceManagerment.Designer.cs">
       <DependentUpon>serviceManagerment.cs</DependentUpon>
     </Compile>
+    <Compile Include="StaffManagerment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffManagerment.Designer.cs">
+      <DependentUpon>StaffManagerment.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="appiontmentManagement.resx">
       <DependentUpon>appiontmentManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AvailableDate.resx">
+      <DependentUpon>AvailableDate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
@@ -132,11 +149,16 @@
     <EmbeddedResource Include="serviceManagerment.resx">
       <DependentUpon>serviceManagerment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StaffManagerment.resx">
+      <DependentUpon>StaffManagerment.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\clinic.Model.Appiontment.datasource" />
     <None Include="Properties\DataSources\clinic.Model.Doctors.datasource" />
     <None Include="Properties\DataSources\clinic.Model.Payment.datasource" />
     <None Include="Properties\DataSources\clinic.Model.Services.datasource" />
+    <None Include="Properties\DataSources\clinic.Model.staff.datasource" />
+    <None Include="Properties\DataSources\clinic.Model.Staff1.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

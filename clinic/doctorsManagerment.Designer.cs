@@ -41,6 +41,15 @@
             this.label6 = new System.Windows.Forms.Label();
             this.chkAvailable = new System.Windows.Forms.CheckBox();
             this.dataGridViewDoctors = new System.Windows.Forms.DataGridView();
+            this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addBtn = new System.Windows.Forms.Button();
+            this.updateBtn = new System.Windows.Forms.Button();
+            this.deleteBtn = new System.Windows.Forms.Button();
+            this.clearBtn = new System.Windows.Forms.Button();
+            this.ExitBtn = new System.Windows.Forms.Button();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.saveBtn = new System.Windows.Forms.Button();
             this.doctorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,11 +57,6 @@
             this.phoneDgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.isAvailableDgv = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.doctorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.addBtn = new System.Windows.Forms.Button();
-            this.updateBtn = new System.Windows.Forms.Button();
-            this.deleteBtn = new System.Windows.Forms.Button();
-            this.clearBtn = new System.Windows.Forms.Button();
-            this.ExitBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoctors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.doctorsBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +65,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label1.Location = new System.Drawing.Point(828, 42);
+            this.label1.Location = new System.Drawing.Point(835, 79);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(187, 24);
@@ -72,7 +76,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label2.Location = new System.Drawing.Point(157, 67);
+            this.label2.Location = new System.Drawing.Point(213, 163);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 24);
@@ -82,26 +86,26 @@
             // firstNameText
             // 
             this.firstNameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.firstNameText.Location = new System.Drawing.Point(163, 125);
+            this.firstNameText.Location = new System.Drawing.Point(217, 212);
             this.firstNameText.Margin = new System.Windows.Forms.Padding(5);
             this.firstNameText.Name = "firstNameText";
-            this.firstNameText.Size = new System.Drawing.Size(517, 29);
+            this.firstNameText.Size = new System.Drawing.Size(263, 29);
             this.firstNameText.TabIndex = 2;
             // 
             // lastNameText
             // 
             this.lastNameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.lastNameText.Location = new System.Drawing.Point(163, 264);
+            this.lastNameText.Location = new System.Drawing.Point(527, 213);
             this.lastNameText.Margin = new System.Windows.Forms.Padding(5);
             this.lastNameText.Name = "lastNameText";
-            this.lastNameText.Size = new System.Drawing.Size(517, 29);
+            this.lastNameText.Size = new System.Drawing.Size(263, 29);
             this.lastNameText.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label3.Location = new System.Drawing.Point(157, 205);
+            this.label3.Location = new System.Drawing.Point(523, 163);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(99, 24);
@@ -111,17 +115,17 @@
             // specializationText
             // 
             this.specializationText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.specializationText.Location = new System.Drawing.Point(163, 408);
+            this.specializationText.Location = new System.Drawing.Point(215, 312);
             this.specializationText.Margin = new System.Windows.Forms.Padding(5);
             this.specializationText.Name = "specializationText";
-            this.specializationText.Size = new System.Drawing.Size(517, 29);
+            this.specializationText.Size = new System.Drawing.Size(263, 29);
             this.specializationText.TabIndex = 8;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label4.Location = new System.Drawing.Point(157, 350);
+            this.label4.Location = new System.Drawing.Point(211, 263);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(125, 24);
@@ -131,17 +135,17 @@
             // phoneText
             // 
             this.phoneText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.phoneText.Location = new System.Drawing.Point(163, 561);
+            this.phoneText.Location = new System.Drawing.Point(527, 313);
             this.phoneText.Margin = new System.Windows.Forms.Padding(5);
             this.phoneText.Name = "phoneText";
-            this.phoneText.Size = new System.Drawing.Size(517, 29);
+            this.phoneText.Size = new System.Drawing.Size(263, 29);
             this.phoneText.TabIndex = 6;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label5.Location = new System.Drawing.Point(157, 502);
+            this.label5.Location = new System.Drawing.Point(523, 263);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(140, 24);
@@ -152,7 +156,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label6.Location = new System.Drawing.Point(157, 651);
+            this.label6.Location = new System.Drawing.Point(213, 371);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 24);
@@ -163,7 +167,7 @@
             // 
             this.chkAvailable.AutoSize = true;
             this.chkAvailable.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.chkAvailable.Location = new System.Drawing.Point(163, 719);
+            this.chkAvailable.Location = new System.Drawing.Point(217, 423);
             this.chkAvailable.Margin = new System.Windows.Forms.Padding(5);
             this.chkAvailable.Name = "chkAvailable";
             this.chkAvailable.Size = new System.Drawing.Size(123, 28);
@@ -181,13 +185,108 @@
             this.lastNameDgv,
             this.specializationDgv,
             this.phoneDgv,
-            this.isAvailableDgv});
+            this.isAvailableDgv,
+            this.StartDate,
+            this.EndDate});
             this.dataGridViewDoctors.DataSource = this.doctorsBindingSource;
-            this.dataGridViewDoctors.Location = new System.Drawing.Point(783, 111);
+            this.dataGridViewDoctors.Location = new System.Drawing.Point(831, 111);
             this.dataGridViewDoctors.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridViewDoctors.Name = "dataGridViewDoctors";
-            this.dataGridViewDoctors.Size = new System.Drawing.Size(769, 588);
+            this.dataGridViewDoctors.Size = new System.Drawing.Size(742, 538);
             this.dataGridViewDoctors.TabIndex = 11;
+            this.dataGridViewDoctors.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDoctors_CellContentClick);
+            // 
+            // StartDate
+            // 
+            this.StartDate.DataPropertyName = "StartDate";
+            this.StartDate.HeaderText = "StartDate";
+            this.StartDate.Name = "StartDate";
+            // 
+            // EndDate
+            // 
+            this.EndDate.DataPropertyName = "EndDate";
+            this.EndDate.HeaderText = "EndDate";
+            this.EndDate.Name = "EndDate";
+            // 
+            // addBtn
+            // 
+            this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.addBtn.Location = new System.Drawing.Point(194, 825);
+            this.addBtn.Margin = new System.Windows.Forms.Padding(5);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(102, 69);
+            this.addBtn.TabIndex = 12;
+            this.addBtn.Text = "Add";
+            this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            // 
+            // updateBtn
+            // 
+            this.updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.updateBtn.Location = new System.Drawing.Point(321, 825);
+            this.updateBtn.Margin = new System.Windows.Forms.Padding(5);
+            this.updateBtn.Name = "updateBtn";
+            this.updateBtn.Size = new System.Drawing.Size(102, 69);
+            this.updateBtn.TabIndex = 13;
+            this.updateBtn.Text = "Update";
+            this.updateBtn.UseVisualStyleBackColor = true;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.deleteBtn.Location = new System.Drawing.Point(478, 825);
+            this.deleteBtn.Margin = new System.Windows.Forms.Padding(5);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(102, 69);
+            this.deleteBtn.TabIndex = 14;
+            this.deleteBtn.Text = "Delete";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
+            // clearBtn
+            // 
+            this.clearBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.clearBtn.Location = new System.Drawing.Point(610, 825);
+            this.clearBtn.Margin = new System.Windows.Forms.Padding(5);
+            this.clearBtn.Name = "clearBtn";
+            this.clearBtn.Size = new System.Drawing.Size(102, 69);
+            this.clearBtn.TabIndex = 15;
+            this.clearBtn.Text = "Clear";
+            this.clearBtn.UseVisualStyleBackColor = true;
+            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
+            // 
+            // ExitBtn
+            // 
+            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.ExitBtn.Location = new System.Drawing.Point(745, 825);
+            this.ExitBtn.Margin = new System.Windows.Forms.Padding(5);
+            this.ExitBtn.Name = "ExitBtn";
+            this.ExitBtn.Size = new System.Drawing.Size(102, 69);
+            this.ExitBtn.TabIndex = 16;
+            this.ExitBtn.Text = "Exit";
+            this.ExitBtn.UseVisualStyleBackColor = true;
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(164, 917);
+            this.guna2Panel1.TabIndex = 17;
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.saveBtn.Location = new System.Drawing.Point(200, 655);
+            this.saveBtn.Margin = new System.Windows.Forms.Padding(5);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(102, 69);
+            this.saveBtn.TabIndex = 24;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = true;
             // 
             // doctorId
             // 
@@ -234,72 +333,14 @@
             // 
             this.doctorsBindingSource.DataSource = typeof(clinic.Model.Doctors);
             // 
-            // addBtn
-            // 
-            this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.addBtn.Location = new System.Drawing.Point(237, 814);
-            this.addBtn.Margin = new System.Windows.Forms.Padding(5);
-            this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(204, 69);
-            this.addBtn.TabIndex = 12;
-            this.addBtn.Text = "Add";
-            this.addBtn.UseVisualStyleBackColor = true;
-            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
-            // 
-            // updateBtn
-            // 
-            this.updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.updateBtn.Location = new System.Drawing.Point(530, 814);
-            this.updateBtn.Margin = new System.Windows.Forms.Padding(5);
-            this.updateBtn.Name = "updateBtn";
-            this.updateBtn.Size = new System.Drawing.Size(204, 69);
-            this.updateBtn.TabIndex = 13;
-            this.updateBtn.Text = "Update";
-            this.updateBtn.UseVisualStyleBackColor = true;
-            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
-            // 
-            // deleteBtn
-            // 
-            this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.deleteBtn.Location = new System.Drawing.Point(804, 814);
-            this.deleteBtn.Margin = new System.Windows.Forms.Padding(5);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(204, 69);
-            this.deleteBtn.TabIndex = 14;
-            this.deleteBtn.Text = "Delete";
-            this.deleteBtn.UseVisualStyleBackColor = true;
-            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
-            // 
-            // clearBtn
-            // 
-            this.clearBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.clearBtn.Location = new System.Drawing.Point(1072, 814);
-            this.clearBtn.Margin = new System.Windows.Forms.Padding(5);
-            this.clearBtn.Name = "clearBtn";
-            this.clearBtn.Size = new System.Drawing.Size(204, 69);
-            this.clearBtn.TabIndex = 15;
-            this.clearBtn.Text = "Clear";
-            this.clearBtn.UseVisualStyleBackColor = true;
-            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
-            // 
-            // ExitBtn
-            // 
-            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.ExitBtn.Location = new System.Drawing.Point(1329, 814);
-            this.ExitBtn.Margin = new System.Windows.Forms.Padding(5);
-            this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(204, 69);
-            this.ExitBtn.TabIndex = 16;
-            this.ExitBtn.Text = "Exit";
-            this.ExitBtn.UseVisualStyleBackColor = true;
-            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
-            // 
             // doctorsManagerment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1587, 917);
             this.ControlBox = false;
+            this.Controls.Add(this.saveBtn);
+            this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.deleteBtn);
@@ -321,7 +362,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "doctorsManagerment";
-            this.Text = "dotorsManagerment";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoctors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.doctorsBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -348,12 +388,16 @@
         private System.Windows.Forms.Button updateBtn;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Button clearBtn;
+        private System.Windows.Forms.Button ExitBtn;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn doctorId;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn specializationDgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneDgv;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isAvailableDgv;
-        private System.Windows.Forms.Button ExitBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StartDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndDate;
     }
 }

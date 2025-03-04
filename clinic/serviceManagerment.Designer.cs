@@ -171,6 +171,7 @@
             this.dataGridViewService.Name = "dataGridViewService";
             this.dataGridViewService.Size = new System.Drawing.Size(594, 408);
             this.dataGridViewService.TabIndex = 9;
+            this.dataGridViewService.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewService_CellContentClick);
             // 
             // serviceIdDgv
             // 

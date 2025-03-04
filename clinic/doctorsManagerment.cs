@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -22,8 +24,7 @@ namespace clinic
             dataGridViewDoctors.SelectionChanged += DataGridViewDoctors_SelectionChanged;
         }
 
-        
-
+       
         private void addBtn_Click(object sender, EventArgs e)
         {
             var doctor = new Doctors
@@ -32,7 +33,9 @@ namespace clinic
                 LastName = lastNameText.Text,
                 Specialization = specializationText.Text,
                 Phone = phoneText.Text,
-                isAvailable = chkAvailable.Checked
+                isAvailable = chkAvailable.Checked,
+                StartDate = TimeSpan.Parse(txtStartDate.Text),
+                EndDate = TimeSpan.Parse(txtEndDate.Text)
             };
 
             try
@@ -138,9 +141,13 @@ namespace clinic
                 specializationText.Text = selectedRow.Cells["specializationDgv"].Value?.ToString() ?? "";
                 phoneText.Text = selectedRow.Cells["phoneDgv"].Value?.ToString() ?? "";
                 chkAvailable.Checked = Convert.ToBoolean(selectedRow.Cells["isAvailableDgv"].Value ?? false);
+                txtStartDate.Text = selectedRow.Cells["StartDate"].Value?.ToString();
+                txtEndDate.Text = selectedRow.Cells["EndDate"].Value?.ToString();
+
 
             }
         }
+      
 
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -163,5 +170,54 @@ namespace clinic
             this.Hide();
 
         }
+
+        private void dataGridViewDoctors_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
+
+        //private void saveBtn_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        int doctorId = Convert.ToInt32(txtDoctorId.Text);
+        //        bool isAvailable = chkAvailable.Checked;
+        //        string availableDay = cmbAvailableDay.SelectedItem?.ToString() ?? "";
+        //        TimeSpan startTime = dtpStartTime.Value.TimeOfDay;
+        //        TimeSpan endTime = dtpEndTime.Value.TimeOfDay;
+
+
+
+        //        MessageBox.Show("Doctor availability updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        LoadDoctors(); // Refresh DataGridView
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
+
+        //private void LoadDoctorsByTime()
+        //{
+        //    try
+        //    {
+        //        string today = DateTime.Now.DayOfWeek.ToString();
+        //        TimeSpan currentTime = DateTime.Now.TimeOfDay;  
+
+        //        var doctorsAtThisTime = _dataAccess.GetDoctorsByTime(today, currentTime);
+
+        //        comboBoxDoctor.DataSource = doctorsAtThisTime;
+        //        comboBoxDoctor.DisplayMember = "FirstName";
+        //        comboBoxDoctor.ValueMember = "DoctorId";
+        //        comboBoxDoctor.SelectedIndex = -1;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error loading doctors by time: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
     }
+
 }

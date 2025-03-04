@@ -38,6 +38,7 @@
             this.LoginBtn = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
+            this.chkPass = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -50,7 +51,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(528, 230);
+            this.panel1.Size = new System.Drawing.Size(544, 230);
             this.panel1.TabIndex = 1;
             // 
             // pictureBox1
@@ -61,7 +62,7 @@
             this.pictureBox1.Image = global::clinic.Properties.Resources.logo_2078018_640;
             this.pictureBox1.Location = new System.Drawing.Point(0, 108);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(528, 122);
+            this.pictureBox1.Size = new System.Drawing.Size(544, 122);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -152,12 +153,24 @@
             this.ExitBtn.UseVisualStyleBackColor = false;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
+            // chkPass
+            // 
+            this.chkPass.AutoSize = true;
+            this.chkPass.Location = new System.Drawing.Point(427, 424);
+            this.chkPass.Name = "chkPass";
+            this.chkPass.Size = new System.Drawing.Size(74, 28);
+            this.chkPass.TabIndex = 12;
+            this.chkPass.Text = "show";
+            this.chkPass.UseVisualStyleBackColor = true;
+            this.chkPass.CheckedChanged += new System.EventHandler(this.chkPass_CheckedChanged);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(528, 687);
+            this.ClientSize = new System.Drawing.Size(544, 687);
+            this.Controls.Add(this.chkPass);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.LoginBtn);
@@ -173,6 +186,7 @@
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -194,5 +208,6 @@
         private System.Windows.Forms.Button LoginBtn;
         private System.Windows.Forms.Button clearBtn;
         private System.Windows.Forms.Button ExitBtn;
+        private System.Windows.Forms.CheckBox chkPass;
     }
 }

@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace clinic.Model
 {
@@ -52,14 +53,45 @@ namespace clinic.Model
             }
         }
 
-        public Dictionary<string , int> GetPatientsByGender()
+        //staff
+        
+        public void AddStaff(Staff staff)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "SELTECT COUNT(*) as count from patients GROUP BY Gender";
-                return db.Query<(string Gender, int Count)>(sql).ToDictionary(row => row.Gender, row => row.Count);
+                string sql = "INSERT INTO Staff (Name,Password,Role,Image) VALUES (@Name,@Password,@Role,@Image)";
+                db.Execute(sql, staff);
+                
             }
         }
+
+        public void UpdateStaff(Staff staff) 
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "UPDATE staff SET Name = @Name , Password = @Password , Role = @Role";
+                db.Execute(sql, staff);
+            }
+        }   
+        public void DeleteStaff(int Id)
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "DELETE FROM staff WHERE Id = @Id";
+                db.Execute(sql, new { id = Id });
+            }
+        }
+
+        public List<Staff> GetStaff()
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "SELECT * FROM staff";
+                return db.Query<Staff>(sql).AsList();
+            }
+        }
+
+
 
         //doctor
         public void AddDoctor(Doctors doctor)
@@ -93,10 +125,65 @@ namespace clinic.Model
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "SELECT * FROM doctors";
+                string sql = "SELECT * FROM doctors Where IsAvailable = 1";
                 return db.Query<Doctors>(sql).AsList();
             }
         }
+ 
+
+        //available Docotor
+
+        public void AddAvailable (DoctorAvailable doctorAvailable)
+        {
+            using (IDbConnection db  = new SqlConnection(_connectionString))
+            {
+                string sql = "INSERT INTO   ";
+            }
+        }
+        public List<DoctorAvailable> GetAvailableDoctors()
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                string query = @"
+            SELECT d.doctorId, d.firstName, d.lastName, d.specialization, d.phone, da.availableDay, da.startTime, da.endTime
+            FROM doctors d
+            INNER JOIN doctor_availability da ON d.doctorId = da.doctorId
+            WHERE d.isAvailable = 1";
+
+                return db.Query<DoctorAvailable>(query).ToList();
+            }
+        }
+
+        public List<DoctorAvailable> GetDoctorsByDay(string day)
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                string query = @"
+            SELECT d.doctorId, d.firstName, d.lastName, d.specialization, d.phone, da.availableDay, da.startTime, da.endTime
+            FROM doctors d
+            INNER JOIN doctor_availability da ON d.doctorId = da.doctorId
+            WHERE d.isAvailable = 1 AND da.availableDay = @Day";
+
+                return db.Query<DoctorAvailable>(query , new { Day = day }).ToList();
+            }
+        }
+
+        public List<DoctorAvailable> GetDoctorsByTime(string day , TimeSpan time)
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                string query = @"
+            SELECT d.doctorId, d.firstName, d.lastName, d.specialization, d.phone, da.availableDay, da.startTime, da.endTime
+            FROM doctors d
+            INNER JOIN doctor_availability da ON d.doctorId = da.doctorId
+            WHERE d.isAvailable = 1 
+            AND da.availableDay = @Day
+            AND @Time BETWEEN da.startTime AND da.endTime";
+                return db.Query<DoctorAvailable>(query, new { Day = day  , Time = time}).ToList();
+            }
+        }
+
+
 
         //service 
         public void AddService(Services service)

@@ -19,11 +19,38 @@ namespace clinic
         public Dashboard()
         {
             InitializeComponent();
+            LoadTotalPatient();
+            LoadTotalDoctor();
         }
-        private void LoadDashboardData()
+        private void Dashboard_Load(object sender, EventArgs e)
         {
-          
+            ApplyRolePermissions();
         }
+        private void LoadTotalPatient()
+        {
+            try
+            {
+                List<Patients> TotalPateints = _dataAccess.GetPatients();
+                totalPatientsText.Text = TotalPateints.Count.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading patients: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void LoadTotalDoctor()
+        {
+            try
+            {
+                List<Doctors> TotalDoctor = _dataAccess.GetDoctors();
+                totalDoctorText.Text = TotalDoctor.Count.ToString();
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show("Error loading doctors: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        
 
         private void AppiontmentBtn_Click(object sender, EventArgs e)
         {
@@ -58,6 +85,30 @@ namespace clinic
             LoginForm login = new LoginForm();
             login.Show();
             this.Hide();
+        }
+
+        private void ApplyRolePermissions()
+        {
+            if (LoginForm.LoggedInUserRole == "staff")
+            {
+                DoctorBtn.Enabled = false; 
+                DoctorBtn.Visible = false;
+                StaffBtn.Enabled = false;
+                StaffBtn.Visible = false;
+            }
+            else if (LoginForm.LoggedInUserRole == "admin")
+            {
+               
+                DoctorBtn.Enabled = true;
+                StaffBtn.Enabled=true;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StaffManagerment staff = new StaffManagerment();
+            staff.ShowDialog();
+            
         }
     }
 }

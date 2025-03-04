@@ -183,5 +183,10 @@ namespace clinic
             das.Show();
             this.Hide();
         }
+
+        private void dataGridViewService_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

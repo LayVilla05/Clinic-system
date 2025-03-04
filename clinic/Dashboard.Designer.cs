@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.DoctorBtn = new System.Windows.Forms.Button();
             this.PatientBtn = new System.Windows.Forms.Button();
             this.ServiceBtn = new System.Windows.Forms.Button();
@@ -41,30 +38,23 @@
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.totalRevenue = new System.Windows.Forms.Label();
-            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.totalRevenueText = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.totalDoctor = new System.Windows.Forms.Label();
-            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.totalDoctorText = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.totalPatients = new System.Windows.Forms.Label();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.totalPatientsText = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.StaffBtn = new System.Windows.Forms.Button();
+            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.appiontmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.paymentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.guna2Panel2.SuspendLayout();
+            this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
-            this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appiontmentBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paymentBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // DoctorBtn
@@ -160,7 +150,7 @@
             this.logoutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logoutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.logoutBtn.ForeColor = System.Drawing.Color.Transparent;
-            this.logoutBtn.Location = new System.Drawing.Point(21, 673);
+            this.logoutBtn.Location = new System.Drawing.Point(21, 683);
             this.logoutBtn.Name = "logoutBtn";
             this.logoutBtn.Padding = new System.Windows.Forms.Padding(10);
             this.logoutBtn.Size = new System.Drawing.Size(141, 50);
@@ -178,13 +168,13 @@
             // 
             this.guna2Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(143)))), ((int)(((byte)(202)))));
             this.guna2Panel2.Controls.Add(this.label4);
-            this.guna2Panel2.Controls.Add(this.totalRevenue);
+            this.guna2Panel2.Controls.Add(this.totalRevenueText);
             this.guna2Panel2.Controls.Add(this.guna2PictureBox3);
             this.guna2Panel2.Controls.Add(this.label2);
-            this.guna2Panel2.Controls.Add(this.totalDoctor);
+            this.guna2Panel2.Controls.Add(this.totalDoctorText);
             this.guna2Panel2.Controls.Add(this.guna2PictureBox2);
             this.guna2Panel2.Controls.Add(this.label1);
-            this.guna2Panel2.Controls.Add(this.totalPatients);
+            this.guna2Panel2.Controls.Add(this.totalPatientsText);
             this.guna2Panel2.Controls.Add(this.guna2PictureBox1);
             this.guna2Panel2.Location = new System.Drawing.Point(212, 12);
             this.guna2Panel2.Name = "guna2Panel2";
@@ -200,14 +190,83 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Monthly Revenue";
             // 
-            // totalRevenue
+            // totalRevenueText
             // 
-            this.totalRevenue.AutoSize = true;
-            this.totalRevenue.Location = new System.Drawing.Point(868, 49);
-            this.totalRevenue.Name = "totalRevenue";
-            this.totalRevenue.Size = new System.Drawing.Size(20, 24);
-            this.totalRevenue.TabIndex = 7;
-            this.totalRevenue.Text = "9";
+            this.totalRevenueText.AutoSize = true;
+            this.totalRevenueText.Location = new System.Drawing.Point(868, 49);
+            this.totalRevenueText.Name = "totalRevenueText";
+            this.totalRevenueText.Size = new System.Drawing.Size(20, 24);
+            this.totalRevenueText.TabIndex = 7;
+            this.totalRevenueText.Text = "9";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(486, 92);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(121, 24);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Active Doctor";
+            // 
+            // totalDoctorText
+            // 
+            this.totalDoctorText.AutoSize = true;
+            this.totalDoctorText.Location = new System.Drawing.Point(486, 49);
+            this.totalDoctorText.Name = "totalDoctorText";
+            this.totalDoctorText.Size = new System.Drawing.Size(20, 24);
+            this.totalDoctorText.TabIndex = 4;
+            this.totalDoctorText.Text = "9";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(138, 92);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 24);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Patients";
+            // 
+            // totalPatientsText
+            // 
+            this.totalPatientsText.AutoSize = true;
+            this.totalPatientsText.Location = new System.Drawing.Point(138, 49);
+            this.totalPatientsText.Name = "totalPatientsText";
+            this.totalPatientsText.Size = new System.Drawing.Size(20, 24);
+            this.totalPatientsText.TabIndex = 1;
+            this.totalPatientsText.Text = "9";
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(116)))), ((int)(((byte)(181)))));
+            this.guna2Panel1.Controls.Add(this.StaffBtn);
+            this.guna2Panel1.Controls.Add(this.guna2CirclePictureBox1);
+            this.guna2Panel1.Controls.Add(this.AppiontmentBtn);
+            this.guna2Panel1.Controls.Add(this.logoutBtn);
+            this.guna2Panel1.Controls.Add(this.ServiceBtn);
+            this.guna2Panel1.Controls.Add(this.DoctorBtn);
+            this.guna2Panel1.Controls.Add(this.PatientBtn);
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.ShadowDecoration.Color = System.Drawing.Color.DimGray;
+            this.guna2Panel1.Size = new System.Drawing.Size(187, 767);
+            this.guna2Panel1.TabIndex = 6;
+            // 
+            // StaffBtn
+            // 
+            this.StaffBtn.BackColor = System.Drawing.Color.Transparent;
+            this.StaffBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.StaffBtn.FlatAppearance.BorderSize = 0;
+            this.StaffBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StaffBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.StaffBtn.ForeColor = System.Drawing.Color.Transparent;
+            this.StaffBtn.Location = new System.Drawing.Point(27, 607);
+            this.StaffBtn.Name = "StaffBtn";
+            this.StaffBtn.Padding = new System.Windows.Forms.Padding(10);
+            this.StaffBtn.Size = new System.Drawing.Size(135, 50);
+            this.StaffBtn.TabIndex = 6;
+            this.StaffBtn.Text = "Staff";
+            this.StaffBtn.UseVisualStyleBackColor = false;
+            this.StaffBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // guna2PictureBox3
             // 
@@ -221,24 +280,6 @@
             this.guna2PictureBox3.TabIndex = 6;
             this.guna2PictureBox3.TabStop = false;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(486, 92);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(121, 24);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Active Doctor";
-            // 
-            // totalDoctor
-            // 
-            this.totalDoctor.AutoSize = true;
-            this.totalDoctor.Location = new System.Drawing.Point(486, 49);
-            this.totalDoctor.Name = "totalDoctor";
-            this.totalDoctor.Size = new System.Drawing.Size(20, 24);
-            this.totalDoctor.TabIndex = 4;
-            this.totalDoctor.Text = "9";
-            // 
             // guna2PictureBox2
             // 
             this.guna2PictureBox2.BorderRadius = 14;
@@ -251,24 +292,6 @@
             this.guna2PictureBox2.TabIndex = 3;
             this.guna2PictureBox2.TabStop = false;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(138, 92);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 24);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Patients";
-            // 
-            // totalPatients
-            // 
-            this.totalPatients.AutoSize = true;
-            this.totalPatients.Location = new System.Drawing.Point(138, 49);
-            this.totalPatients.Name = "totalPatients";
-            this.totalPatients.Size = new System.Drawing.Size(20, 24);
-            this.totalPatients.TabIndex = 1;
-            this.totalPatients.Text = "9";
-            // 
             // guna2PictureBox1
             // 
             this.guna2PictureBox1.BorderRadius = 14;
@@ -280,21 +303,6 @@
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox1.TabIndex = 0;
             this.guna2PictureBox1.TabStop = false;
-            // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(116)))), ((int)(((byte)(181)))));
-            this.guna2Panel1.Controls.Add(this.guna2CirclePictureBox1);
-            this.guna2Panel1.Controls.Add(this.AppiontmentBtn);
-            this.guna2Panel1.Controls.Add(this.logoutBtn);
-            this.guna2Panel1.Controls.Add(this.ServiceBtn);
-            this.guna2Panel1.Controls.Add(this.DoctorBtn);
-            this.guna2Panel1.Controls.Add(this.PatientBtn);
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.ShadowDecoration.Color = System.Drawing.Color.DimGray;
-            this.guna2Panel1.Size = new System.Drawing.Size(187, 767);
-            this.guna2Panel1.TabIndex = 6;
             // 
             // guna2CirclePictureBox1
             // 
@@ -310,36 +318,11 @@
             this.guna2CirclePictureBox1.TabIndex = 5;
             this.guna2CirclePictureBox1.TabStop = false;
             // 
-            // appiontmentBindingSource
-            // 
-            this.appiontmentBindingSource.DataSource = typeof(clinic.Model.Appiontment);
-            // 
-            // paymentBindingSource
-            // 
-            this.paymentBindingSource.DataSource = typeof(clinic.Model.Payment);
-            // 
-            // chart1
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(212, 177);
-            this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(1007, 564);
-            this.chart1.TabIndex = 8;
-            this.chart1.Text = "chart1";
-            // 
             // Dashboard
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1246, 767);
-            this.Controls.Add(this.chart1);
             this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.PanelSidebar);
@@ -349,18 +332,15 @@
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Dashboard";
+            this.Load += new System.EventHandler(this.Dashboard_Load);
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
+            this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
-            this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appiontmentBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paymentBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -373,23 +353,20 @@
         private System.Windows.Forms.Button ServiceBtn;
         private System.Windows.Forms.Button AppiontmentBtn;
         private System.Windows.Forms.Panel PanelSidebar;
-        private System.Windows.Forms.BindingSource appiontmentBindingSource;
-        private System.Windows.Forms.BindingSource paymentBindingSource;
         private System.Windows.Forms.Button logoutBtn;
-        private System.Windows.Forms.BindingSource bindingSource1;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label totalPatients;
+        private System.Windows.Forms.Label totalPatientsText;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label totalRevenue;
+        private System.Windows.Forms.Label totalRevenueText;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label totalDoctor;
+        private System.Windows.Forms.Label totalDoctorText;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Button StaffBtn;
     }
 }
