@@ -107,7 +107,8 @@ namespace clinic
         private void button1_Click(object sender, EventArgs e)
         {
             StaffManagerment staff = new StaffManagerment();
-            staff.ShowDialog();
+            staff.Show();
+            this.Hide();
             
         }
     }

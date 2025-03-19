@@ -46,19 +46,19 @@
             this.DeleteBtn = new Guna.UI2.WinForms.Guna2Button();
             this.ClearBtn = new Guna.UI2.WinForms.Guna2Button();
             this.DgvStaff = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.image = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProfilePictureBox = new System.Windows.Forms.PictureBox();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.ExitBtn = new Guna.UI2.WinForms.Guna2Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.role = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.image = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.staffBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ProfilePictureBox = new System.Windows.Forms.PictureBox();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.ExitBtn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvStaff)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // NameTexts
@@ -86,7 +86,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.ForeColor = System.Drawing.Color.Aqua;
-            this.label1.Location = new System.Drawing.Point(68, 33);
+            this.label1.Location = new System.Drawing.Point(490, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 24);
@@ -105,7 +105,7 @@
             // 
             // guna2Panel1
             // 
-            this.guna2Panel1.BackColor = System.Drawing.Color.Tomato;
+            this.guna2Panel1.BackColor = System.Drawing.Color.Blue;
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Location = new System.Drawing.Point(-2, 0);
             this.guna2Panel1.Name = "guna2Panel1";
@@ -149,7 +149,7 @@
             this.RoleCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RoleCombo.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.RoleCombo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.RoleCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RoleCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.RoleCombo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.RoleCombo.ItemHeight = 30;
             this.RoleCombo.Items.AddRange(new object[] {
@@ -308,12 +308,44 @@
             this.DgvStaff.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(186)))), ((int)(((byte)(231)))));
             this.DgvStaff.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 
+            // id
+            // 
+            this.id.DataPropertyName = "Id";
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "Name";
+            this.name.HeaderText = "Name";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // password
+            // 
+            this.password.DataPropertyName = "Password";
+            this.password.HeaderText = "Password";
+            this.password.Name = "password";
+            this.password.ReadOnly = true;
+            // 
+            // role
+            // 
+            this.role.DataPropertyName = "Role";
+            this.role.HeaderText = "Role";
+            this.role.Name = "role";
+            this.role.ReadOnly = true;
+            // 
             // image
             // 
             this.image.DataPropertyName = "Image";
             this.image.HeaderText = "Image";
             this.image.Name = "image";
             this.image.ReadOnly = true;
+            // 
+            // staffBindingSource
+            // 
+            this.staffBindingSource.DataSource = typeof(clinic.Model.Staff);
             // 
             // ProfilePictureBox
             // 
@@ -357,38 +389,6 @@
             this.ExitBtn.Text = "Exit";
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
-            // id
-            // 
-            this.id.DataPropertyName = "Id";
-            this.id.HeaderText = "Id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // name
-            // 
-            this.name.DataPropertyName = "Name";
-            this.name.HeaderText = "Name";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // password
-            // 
-            this.password.DataPropertyName = "Password";
-            this.password.HeaderText = "Password";
-            this.password.Name = "password";
-            this.password.ReadOnly = true;
-            // 
-            // role
-            // 
-            this.role.DataPropertyName = "Role";
-            this.role.HeaderText = "Role";
-            this.role.Name = "role";
-            this.role.ReadOnly = true;
-            // 
-            // staffBindingSource
-            // 
-            this.staffBindingSource.DataSource = typeof(clinic.Model.Staff);
-            // 
             // StaffManagerment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -418,8 +418,8 @@
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvStaff)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -13,9 +13,17 @@ namespace clinic.Model
         public string LastName { get; set; }
         public string Specialization { get; set; }
         public string Phone { get; set; }
-        public bool isAvailable { get; set; }
-        public TimeSpan StartDate { get ; set; }
-        public TimeSpan EndDate { get ; set; }
+        public TimeSpan StartTime { get ; set; }
+        public TimeSpan EndTime { get ; set; }
         
+    }
+    public class DoctorAvailables
+    {
+        public int AvailableId { get; set; }
+        public string AvailableDay { get; set; }
+        public int DoctorId { get; set; }
+        public TimeSpan? StartTime { get; set; }
+        public TimeSpan? EndTime { get; set; }
+
     }
 }

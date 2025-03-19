@@ -21,7 +21,7 @@ namespace clinic.Model
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "INSERT INTO Patients (FirstName, LastName, Age, Dob, Gender, Phone, Address) VALUES (@FirstName, @LastName,@Age, @Dob,  @Gender, @Phone, @Address)";
+                string sql = "INSERT INTO Patients (FirstName, LastName, Age, Gender, Phone, Address) VALUES (@FirstName, @LastName, @Age ,  @Gender, @Phone, @Address)";
                 db.Execute(sql, patient);
             }
         }
@@ -30,7 +30,7 @@ namespace clinic.Model
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "UPDATE Patients SET FirstName = @FirstName, LastName = @LastName, Dob = @Dob, Age = @Age, Gender = @Gender, Phone = @Phone, Address = @Address WHERE PatientId = @PatientId";
+                string sql = "UPDATE Patients SET FirstName = @FirstName, LastName = @LastName,  Age = @Age, Gender = @Gender, Phone = @Phone, Address = @Address WHERE PatientId = @PatientId";
                 db.Execute(sql, patient);
             }
         }
@@ -98,7 +98,7 @@ namespace clinic.Model
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "INSERT INTO doctors (FirstName, LastName, Specialization , Phone, isAvailable) VALUES (@FirstName, @LastName,@Specialization, @Phone,  @isAvailable)";
+                string sql = "INSERT INTO doctors (FirstName, LastName, Specialization , Phone) VALUES (@FirstName, @LastName,@Specialization, @Phone)";
                 db.Execute(sql, doctor);
             }
         }
@@ -107,7 +107,7 @@ namespace clinic.Model
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "UPDATE doctors SET FirstName = @FirstName, LastName = @LastName, Specialization = @Specialization, Phone = @Phone, isAvailable = @isAvailable WHERE DoctorId = @DoctorId";
+                string sql = "UPDATE doctors SET FirstName = @FirstName, LastName = @LastName, Specialization = @Specialization, Phone = @Phone, WHERE DoctorId = @DoctorId";
                 db.Execute(sql, doctor);
             }
         }
@@ -125,11 +125,46 @@ namespace clinic.Model
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "SELECT * FROM doctors Where IsAvailable = 1";
+                string sql = "SELECT * FROM doctors";
                 return db.Query<Doctors>(sql).AsList();
             }
         }
- 
+        public DataTable GetDataTable(string query, Dictionary<string, object> parameters = null)
+        {
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString)) // Assuming you have a ConnectionString property
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    if (parameters != null)
+                    {
+                        foreach (var parameter in parameters)
+                        {
+                            command.Parameters.AddWithValue(parameter.Key, parameter.Value);
+                        }
+                    }
+
+                    try
+                    {
+                        connection.Open();
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        adapter.Fill(dataTable);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle exceptions (log, throw, etc.)
+                        Console.WriteLine($"Error in GetDataTable: {ex.Message}");
+                    }
+                }
+            }
+
+            return dataTable;
+        }
+
+
+
+
 
         //available Docotor
 
@@ -137,51 +172,63 @@ namespace clinic.Model
         {
             using (IDbConnection db  = new SqlConnection(_connectionString))
             {
-                string sql = "INSERT INTO   ";
+                string sql = "INSERT INTO  doctor_availability (doctorId , availableDay , startTime , endTime ) Values (@doctorId , @availableDay , @startTime , @endTime) ";
+                db.Execute(sql, doctorAvailable);
             }
         }
-        public List<DoctorAvailable> GetAvailableDoctors()
+
+        public void UpdateAvailable (DoctorAvailable doctorAvailable)
+        {
+            using(IDbConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "UPDATE doctor_availability SET doctorId = @doctorId ,  availableDay = @availableDay ,startTime = @startTime , endTime = @endTime where AvailableId = @AvailableId ";
+                db.Execute(sql, doctorAvailable);
+            }
+        }
+
+        public void DeleteAvailable(int availableId)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                string query = @"
-            SELECT d.doctorId, d.firstName, d.lastName, d.specialization, d.phone, da.availableDay, da.startTime, da.endTime
-            FROM doctors d
-            INNER JOIN doctor_availability da ON d.doctorId = da.doctorId
-            WHERE d.isAvailable = 1";
+                string sql = "DELETE FROM doctor_availability where AvailableId = @AvailableId";
+                db.Execute(sql, new { AvailableId = availableId });
+            }
+        }
 
+        public List<DoctorAvailable> GetDoctorsWithAvailability(string query)
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+               
                 return db.Query<DoctorAvailable>(query).ToList();
             }
         }
 
-        public List<DoctorAvailable> GetDoctorsByDay(string day)
+
+
+        public List<DoctorAvailables> GetAvailableDoctors(int serviceId, DateTime selectedDate)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                string query = @"
-            SELECT d.doctorId, d.firstName, d.lastName, d.specialization, d.phone, da.availableDay, da.startTime, da.endTime
-            FROM doctors d
-            INNER JOIN doctor_availability da ON d.doctorId = da.doctorId
-            WHERE d.isAvailable = 1 AND da.availableDay = @Day";
+                // SQL query to fetch available doctors for the selected service and date
+                string sqlQuery = @"
+            SELECT d.*
+            FROM Doctors d
+            INNER JOIN DoctorServices ds ON d.DoctorId = ds.DoctorId
+            WHERE ds.ServiceId = @ServiceId
+            AND d.DoctorId NOT IN (
+                SELECT a.DoctorId
+                FROM Appointments a
+                WHERE CAST(a.AppointmentDate AS DATE) = CAST(@SelectedDate AS DATE)
+            )";
 
-                return db.Query<DoctorAvailable>(query , new { Day = day }).ToList();
+                var availableDoctors = db.Query<Doctors>(sqlQuery, new { ServiceId = serviceId, SelectedDate = selectedDate }).ToList();
+                return availableDoctors;
+
+        
             }
         }
-
-        public List<DoctorAvailable> GetDoctorsByTime(string day , TimeSpan time)
-        {
-            using (IDbConnection db = new SqlConnection(_connectionString))
-            {
-                string query = @"
-            SELECT d.doctorId, d.firstName, d.lastName, d.specialization, d.phone, da.availableDay, da.startTime, da.endTime
-            FROM doctors d
-            INNER JOIN doctor_availability da ON d.doctorId = da.doctorId
-            WHERE d.isAvailable = 1 
-            AND da.availableDay = @Day
-            AND @Time BETWEEN da.startTime AND da.endTime";
-                return db.Query<DoctorAvailable>(query, new { Day = day  , Time = time}).ToList();
-            }
-        }
+        
 
 
 
@@ -231,6 +278,15 @@ namespace clinic.Model
             }
         }
 
+        public decimal GetServicePrice(string serviceName)
+        {
+            using (var conn = new SqlConnection(connection.Conn("clinic_db")))
+            {
+                string query = "SELECT price FROM services WHERE serviceName = @serviceName";
+                return conn.QueryFirstOrDefault<decimal>(query, new { serviceName });
+            }
+        }
+
 
         // appointment
 
@@ -277,11 +333,104 @@ namespace clinic.Model
                 return result;
             }
         }
+        private void searchAppointments(string searchText)
+        {
+            using (IDbConnection db =  new SqlConnection(_connectionString))
+            {
+                string query = "SELECT * FROM Appointments WHERE PatientName LIKE @search OR DoctorName LIKE @search";
+                var data = db.Query<Appiontment>(query, new { search = "%" + searchText + "%" }).ToList();
+            }
+        }
 
 
         //payment
+        public void InsertPayment(int appointmentId, decimal amountPaid, decimal totalCost, string paymentMethod)
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                var sqlQuery = "INSERT INTO Payments (AppointmentId, AmountPaid, TotalCost, PaymentMethod, PaymentDate) " +
+                               "VALUES (@AppointmentId, @AmountPaid, @TotalCost, @PaymentMethod, @PaymentDate)";
+                db.Execute(sqlQuery, new { appointmentId, amountPaid, totalCost, paymentMethod, PaymentDate = DateTime.Now });
+            }
+        }
+
+        public void UpdatePayment(int paymentId, decimal amountPaid, decimal totalCost, string paymentMethod)
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                var sqlQuery = "UPDATE Payments SET " +
+                               "AmountPaid = @AmountPaid, " +
+                               "TotalCost = @TotalCost, " +
+                               "PaymentMethod = @PaymentMethod, " +
+                               "PaymentDate = @PaymentDate " +
+                               "WHERE PaymentId = @PaymentId";
+                db.Execute(sqlQuery, new { paymentId, amountPaid, totalCost, paymentMethod, PaymentDate = DateTime.Now });
+            }
+        }
 
 
+
+        public int InsertAppointment(int patientId, int doctorId, int serviceId, DateTime appointmentDateTime, string status, string notes, decimal totalCost, decimal amountPaid, string paymentMethod)
+        {
+            using (var conn = new SqlConnection(connection.Conn("clinic_db")))
+            {
+                conn.Open();
+                using (var transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        string insertAppointmentQuery = @"
+                        INSERT INTO Appointments (patientId, doctorId, serviceId, appointmentDate, status, note, totalCost)
+                        VALUES (@patientId, @doctorId, @serviceId, @appointmentDateTime, @status, @notes, @totalCost);
+                        SELECT CAST(SCOPE_IDENTITY() as int);";
+
+                        int appointmentId = conn.ExecuteScalar<int>(insertAppointmentQuery, new
+                        {
+                            patientId,
+                            doctorId,
+                            serviceId,
+                            appointmentDateTime,
+                            status,
+                            notes,
+                            totalCost
+                        }, transaction);
+
+                        //string insertPaymentQuery = @"
+                        //INSERT INTO Payments (appointmentId, amount, paymentDate, paymentMethod, status)
+                        //VALUES (@appointmentId, @amount, GETDATE(), @paymentMethod, 'Completed');";
+
+                        //conn.Execute(insertPaymentQuery, new
+                        //{
+                        //    appointmentId,
+                        //    amount = amountPaid,
+                        //    paymentMethod,
+                        //}, transaction);
+
+                        //transaction.Commit();
+                        return appointmentId;
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        Console.WriteLine("Error in InsertAppointment: " + ex.Message);
+                        throw;
+                    }
+                }
+            }
+        }
+        public static IEnumerable<dynamic> GetAppointmentsWithPayments()
+        {
+            using (var conn = new SqlConnection(connection.Conn("clinic")))
+            {
+                string query = @"
+                SELECT a.appointmentId, a.patientId, a.doctorId, a.serviceId, a.appointmentDate,  a.status, a.note, a.totalCost,
+                       p.paymentId, p.amount, p.paymentDate, p.paymentMethod, p.status
+                FROM Appointments a
+                LEFT JOIN Payments p ON a.appointmentId = p.appointmentId";
+
+                return conn.Query(query);
+            }
+        }
 
     }
 

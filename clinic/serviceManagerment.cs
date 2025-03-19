@@ -17,9 +17,7 @@ namespace clinic
         public serviceManagerment()
         {
             InitializeComponent();
-            LoadDoctorsIntoComboBox();
-            LoadServices();
-            dataGridViewService.SelectionChanged += DataGridViewServices_SelectionChanged;
+            
         }
 
         private void LoadDoctorsIntoComboBox()
@@ -63,6 +61,65 @@ namespace clinic
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
+        }
+
+        private void DataGridViewServices_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewService.SelectedRows.Count > 0)
+            {
+                var selectedRow = dataGridViewService.SelectedRows[0];
+                serviceNameText.Text = selectedRow.Cells["serviceName"].Value?.ToString() ?? "";
+                descriptionText.Text = selectedRow.Cells["description"].Value?.ToString() ?? "";
+                priceText.Text = selectedRow.Cells["price"].Value?.ToString() ?? "";
+
+                if (selectedRow.Cells["doctorId"].Value != null)
+                {
+                    comboBoxDoctor.SelectedValue = Convert.ToInt32(selectedRow.Cells["doctorId"].Value);
+                }
+                else
+                {
+                    comboBoxDoctor.SelectedIndex = -1;
+                }
+            }
+        }
+
+        private void UpdateBtn_Click(object sender, EventArgs e)
+        {
+
+
+        }
+            
+
+        private void ClearBtn_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void ExitBtn_Click(object sender, EventArgs e)
+        {
+         
+        }
+
+        private void dataGridViewService_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void serviceManagerment_Load(object sender, EventArgs e)
+        {
+            LoadDoctorsIntoComboBox();
+            LoadServices();
+            dataGridViewService.SelectionChanged += DataGridViewServices_SelectionChanged;
+        }
+
+        private void AddBtn_Click_1(object sender, EventArgs e)
+        {
+
             if (comboBoxDoctor.SelectedValue == null)
             {
                 MessageBox.Show("Please select a doctor.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -74,7 +131,7 @@ namespace clinic
                 ServiceName = serviceNameText.Text,
                 Description = descriptionText.Text,
                 Price = Convert.ToDecimal(priceText.Text),
-                DoctorId = Convert.ToInt32(comboBoxDoctor.SelectedValue) 
+                DoctorId = Convert.ToInt32(comboBoxDoctor.SelectedValue)
             };
 
             try
@@ -91,69 +148,45 @@ namespace clinic
 
         }
 
-        private void DataGridViewServices_SelectionChanged(object sender, EventArgs e)
+        private void UpdateBtn_Click_1(object sender, EventArgs e)
         {
-            if (dataGridViewService.SelectedRows.Count > 0)
-            {
-                var selectedRow = dataGridViewService.SelectedRows[0];
-                serviceNameText.Text = selectedRow.Cells["serviceNameDgv"].Value?.ToString() ?? "";
-                descriptionText.Text = selectedRow.Cells["descriptionDgv"].Value?.ToString() ?? "";
-                priceText.Text = selectedRow.Cells["priceDgv"].Value?.ToString() ?? "";
-
-                if (selectedRow.Cells["doctorIdDgv"].Value != null)
+                if (dataGridViewService.SelectedRows.Count > 0)
                 {
-                    comboBoxDoctor.SelectedValue = Convert.ToInt32(selectedRow.Cells["doctorIdDgv"].Value);
+                    int serviceId = Convert.ToInt32(dataGridViewService.SelectedRows[0].Cells["serviceId"].Value);
+
+                    var service = new Services
+                    {
+                        ServiceId = serviceId,
+                        ServiceName = serviceNameText.Text,
+                        Description = descriptionText.Text,
+                        Price = Convert.ToDecimal(priceText.Text),
+                        DoctorId = Convert.ToInt32(comboBoxDoctor.SelectedValue)
+                    };
+
+                    try
+                    {
+                        _dataAccess.UpdateService(service);
+                        MessageBox.Show("Service updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ClearFields();
+                        LoadServices();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    comboBoxDoctor.SelectedIndex = -1;
+                    MessageBox.Show("Please select a service to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-        }
 
-        private void UpdateBtn_Click(object sender, EventArgs e)
+        private void DeleteBtn_Click_1(object sender, EventArgs e)
         {
+
             if (dataGridViewService.SelectedRows.Count > 0)
             {
-                int serviceId = Convert.ToInt32(dataGridViewService.SelectedRows[0].Cells["serviceIdDgv"].Value);
-
-                var service = new Services
-                {
-                    ServiceId = serviceId,
-                    ServiceName = serviceNameText.Text,
-                    Description = descriptionText.Text,
-                    Price = Convert.ToDecimal(priceText.Text),
-                    DoctorId = Convert.ToInt32(comboBoxDoctor.SelectedValue)
-                };
-
-                try
-                {
-                    _dataAccess.UpdateService(service);
-                    MessageBox.Show("Service updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearFields();
-                    LoadServices();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select a service to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void ClearBtn_Click(object sender, EventArgs e)
-        {
-            ClearFields();
-        }
-
-        private void DeleteBtn_Click(object sender, EventArgs e)
-        {
-            if (dataGridViewService.SelectedRows.Count > 0)
-            {
-                int serviceId = Convert.ToInt32(dataGridViewService.SelectedRows[0].Cells["serviceIdDgv"].Value);
+                int serviceId = Convert.ToInt32(dataGridViewService.SelectedRows[0].Cells["serviceId"].Value);
 
                 var confirmResult = MessageBox.Show("Are you sure you want to delete this service?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (confirmResult == DialogResult.Yes)
@@ -177,16 +210,18 @@ namespace clinic
             }
         }
 
-        private void ExitBtn_Click(object sender, EventArgs e)
+        private void ExitBtn_Click_1(object sender, EventArgs e)
         {
             Dashboard das = new Dashboard();
             das.Show();
             this.Hide();
         }
 
-        private void dataGridViewService_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void ClearBtn_Click_1(object sender, EventArgs e)
         {
-
+            ClearFields();
         }
+
+       
     }
-}
+    }

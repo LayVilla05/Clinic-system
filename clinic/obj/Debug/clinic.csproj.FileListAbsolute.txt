@@ -35,4 +35,5 @@ F:\source\Clinic-system\clinic\obj\Debug\clinic.pdb
 F:\source\Clinic-system\clinic\obj\Debug\clinic.LoginForm.resources
 F:\source\Clinic-system\clinic\bin\Debug\Guna.UI2.dll
 F:\source\Clinic-system\clinic\obj\Debug\clinic.StaffManagerment.resources
-F:\source\Clinic-system\clinic\obj\Debug\clinic.AvailableDate.resources
+F:\source\Clinic-system\clinic\obj\Debug\clinic.availableDoctor.resources
+F:\source\Clinic-system\clinic\obj\Debug\clinic.Payment.resources

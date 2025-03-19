@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.firstNameText = new System.Windows.Forms.TextBox();
@@ -38,25 +41,23 @@
             this.label4 = new System.Windows.Forms.Label();
             this.phoneText = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.chkAvailable = new System.Windows.Forms.CheckBox();
-            this.dataGridViewDoctors = new System.Windows.Forms.DataGridView();
-            this.StartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addBtn = new System.Windows.Forms.Button();
             this.updateBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
+            this.BtnAsign = new System.Windows.Forms.Button();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.saveBtn = new System.Windows.Forms.Button();
+            this.dataGridViewDoctors = new Guna.UI2.WinForms.Guna2DataGridView();
             this.doctorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.specializationDgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneDgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isAvailableDgv = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.specialization = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doctorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoctors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.doctorsBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -65,18 +66,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label1.Location = new System.Drawing.Point(835, 79);
+            this.label1.Location = new System.Drawing.Point(572, 25);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(187, 24);
+            this.label1.Size = new System.Drawing.Size(139, 24);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Doctor Managerment";
+            this.label1.Text = "Manage Doctor";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label2.Location = new System.Drawing.Point(213, 163);
+            this.label2.Location = new System.Drawing.Point(58, 138);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 24);
@@ -86,7 +87,7 @@
             // firstNameText
             // 
             this.firstNameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.firstNameText.Location = new System.Drawing.Point(217, 212);
+            this.firstNameText.Location = new System.Drawing.Point(62, 187);
             this.firstNameText.Margin = new System.Windows.Forms.Padding(5);
             this.firstNameText.Name = "firstNameText";
             this.firstNameText.Size = new System.Drawing.Size(263, 29);
@@ -95,7 +96,7 @@
             // lastNameText
             // 
             this.lastNameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.lastNameText.Location = new System.Drawing.Point(527, 213);
+            this.lastNameText.Location = new System.Drawing.Point(372, 188);
             this.lastNameText.Margin = new System.Windows.Forms.Padding(5);
             this.lastNameText.Name = "lastNameText";
             this.lastNameText.Size = new System.Drawing.Size(263, 29);
@@ -105,7 +106,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label3.Location = new System.Drawing.Point(523, 163);
+            this.label3.Location = new System.Drawing.Point(368, 138);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(99, 24);
@@ -115,7 +116,7 @@
             // specializationText
             // 
             this.specializationText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.specializationText.Location = new System.Drawing.Point(215, 312);
+            this.specializationText.Location = new System.Drawing.Point(60, 287);
             this.specializationText.Margin = new System.Windows.Forms.Padding(5);
             this.specializationText.Name = "specializationText";
             this.specializationText.Size = new System.Drawing.Size(263, 29);
@@ -125,7 +126,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label4.Location = new System.Drawing.Point(211, 263);
+            this.label4.Location = new System.Drawing.Point(56, 238);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(125, 24);
@@ -135,7 +136,7 @@
             // phoneText
             // 
             this.phoneText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.phoneText.Location = new System.Drawing.Point(527, 313);
+            this.phoneText.Location = new System.Drawing.Point(372, 288);
             this.phoneText.Margin = new System.Windows.Forms.Padding(5);
             this.phoneText.Name = "phoneText";
             this.phoneText.Size = new System.Drawing.Size(263, 29);
@@ -145,73 +146,17 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label5.Location = new System.Drawing.Point(523, 263);
+            this.label5.Location = new System.Drawing.Point(368, 238);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(140, 24);
             this.label5.TabIndex = 5;
             this.label5.Text = "Phone Number";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label6.Location = new System.Drawing.Point(213, 371);
-            this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(86, 24);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Available";
-            // 
-            // chkAvailable
-            // 
-            this.chkAvailable.AutoSize = true;
-            this.chkAvailable.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.chkAvailable.Location = new System.Drawing.Point(217, 423);
-            this.chkAvailable.Margin = new System.Windows.Forms.Padding(5);
-            this.chkAvailable.Name = "chkAvailable";
-            this.chkAvailable.Size = new System.Drawing.Size(123, 28);
-            this.chkAvailable.TabIndex = 10;
-            this.chkAvailable.Text = "Is Available";
-            this.chkAvailable.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewDoctors
-            // 
-            this.dataGridViewDoctors.AutoGenerateColumns = false;
-            this.dataGridViewDoctors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDoctors.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.doctorId,
-            this.firstNameDgv,
-            this.lastNameDgv,
-            this.specializationDgv,
-            this.phoneDgv,
-            this.isAvailableDgv,
-            this.StartDate,
-            this.EndDate});
-            this.dataGridViewDoctors.DataSource = this.doctorsBindingSource;
-            this.dataGridViewDoctors.Location = new System.Drawing.Point(831, 111);
-            this.dataGridViewDoctors.Margin = new System.Windows.Forms.Padding(5);
-            this.dataGridViewDoctors.Name = "dataGridViewDoctors";
-            this.dataGridViewDoctors.Size = new System.Drawing.Size(742, 538);
-            this.dataGridViewDoctors.TabIndex = 11;
-            this.dataGridViewDoctors.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDoctors_CellContentClick);
-            // 
-            // StartDate
-            // 
-            this.StartDate.DataPropertyName = "StartDate";
-            this.StartDate.HeaderText = "StartDate";
-            this.StartDate.Name = "StartDate";
-            // 
-            // EndDate
-            // 
-            this.EndDate.DataPropertyName = "EndDate";
-            this.EndDate.HeaderText = "EndDate";
-            this.EndDate.Name = "EndDate";
-            // 
             // addBtn
             // 
             this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.addBtn.Location = new System.Drawing.Point(194, 825);
+            this.addBtn.Location = new System.Drawing.Point(10, 701);
             this.addBtn.Margin = new System.Windows.Forms.Padding(5);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(102, 69);
@@ -223,7 +168,7 @@
             // updateBtn
             // 
             this.updateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.updateBtn.Location = new System.Drawing.Point(321, 825);
+            this.updateBtn.Location = new System.Drawing.Point(137, 701);
             this.updateBtn.Margin = new System.Windows.Forms.Padding(5);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(102, 69);
@@ -235,7 +180,7 @@
             // deleteBtn
             // 
             this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.deleteBtn.Location = new System.Drawing.Point(478, 825);
+            this.deleteBtn.Location = new System.Drawing.Point(294, 701);
             this.deleteBtn.Margin = new System.Windows.Forms.Padding(5);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(102, 69);
@@ -246,20 +191,21 @@
             // 
             // clearBtn
             // 
+            this.clearBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.clearBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.clearBtn.Location = new System.Drawing.Point(610, 825);
+            this.clearBtn.Location = new System.Drawing.Point(426, 701);
             this.clearBtn.Margin = new System.Windows.Forms.Padding(5);
             this.clearBtn.Name = "clearBtn";
             this.clearBtn.Size = new System.Drawing.Size(102, 69);
             this.clearBtn.TabIndex = 15;
             this.clearBtn.Text = "Clear";
-            this.clearBtn.UseVisualStyleBackColor = true;
+            this.clearBtn.UseVisualStyleBackColor = false;
             this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
             // 
             // ExitBtn
             // 
             this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.ExitBtn.Location = new System.Drawing.Point(745, 825);
+            this.ExitBtn.Location = new System.Drawing.Point(561, 701);
             this.ExitBtn.Margin = new System.Windows.Forms.Padding(5);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(102, 69);
@@ -268,66 +214,138 @@
             this.ExitBtn.UseVisualStyleBackColor = true;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
+            // BtnAsign
+            // 
+            this.BtnAsign.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.BtnAsign.Location = new System.Drawing.Point(91, 588);
+            this.BtnAsign.Margin = new System.Windows.Forms.Padding(5);
+            this.BtnAsign.Name = "BtnAsign";
+            this.BtnAsign.Size = new System.Drawing.Size(205, 69);
+            this.BtnAsign.TabIndex = 24;
+            this.BtnAsign.Text = "Asign Time to Dcotor";
+            this.BtnAsign.UseVisualStyleBackColor = true;
+            this.BtnAsign.Click += new System.EventHandler(this.BtnAsign_Click);
+            // 
             // guna2Panel1
             // 
-            this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(164, 917);
-            this.guna2Panel1.TabIndex = 17;
+            this.guna2Panel1.Size = new System.Drawing.Size(1452, 89);
+            this.guna2Panel1.TabIndex = 25;
             // 
-            // saveBtn
+            // dataGridViewDoctors
             // 
-            this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.saveBtn.Location = new System.Drawing.Point(200, 655);
-            this.saveBtn.Margin = new System.Windows.Forms.Padding(5);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(102, 69);
-            this.saveBtn.TabIndex = 24;
-            this.saveBtn.Text = "Save";
-            this.saveBtn.UseVisualStyleBackColor = true;
+            this.dataGridViewDoctors.AllowUserToAddRows = false;
+            this.dataGridViewDoctors.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridViewDoctors.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewDoctors.AutoGenerateColumns = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDoctors.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewDoctors.ColumnHeadersHeight = 22;
+            this.dataGridViewDoctors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dataGridViewDoctors.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.doctorId,
+            this.firstName,
+            this.lastName,
+            this.specialization,
+            this.phone,
+            this.startTime,
+            this.endTime});
+            this.dataGridViewDoctors.DataSource = this.doctorsBindingSource;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewDoctors.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewDoctors.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridViewDoctors.Location = new System.Drawing.Point(658, 138);
+            this.dataGridViewDoctors.Name = "dataGridViewDoctors";
+            this.dataGridViewDoctors.ReadOnly = true;
+            this.dataGridViewDoctors.RowHeadersVisible = false;
+            this.dataGridViewDoctors.Size = new System.Drawing.Size(754, 431);
+            this.dataGridViewDoctors.TabIndex = 26;
+            this.dataGridViewDoctors.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewDoctors.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dataGridViewDoctors.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dataGridViewDoctors.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dataGridViewDoctors.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dataGridViewDoctors.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewDoctors.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridViewDoctors.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dataGridViewDoctors.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridViewDoctors.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.dataGridViewDoctors.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dataGridViewDoctors.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dataGridViewDoctors.ThemeStyle.HeaderStyle.Height = 22;
+            this.dataGridViewDoctors.ThemeStyle.ReadOnly = true;
+            this.dataGridViewDoctors.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewDoctors.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataGridViewDoctors.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.dataGridViewDoctors.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dataGridViewDoctors.ThemeStyle.RowsStyle.Height = 22;
+            this.dataGridViewDoctors.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridViewDoctors.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
             // doctorId
             // 
             this.doctorId.DataPropertyName = "DoctorId";
             this.doctorId.HeaderText = "DoctorId";
             this.doctorId.Name = "doctorId";
-            this.doctorId.Width = 85;
+            this.doctorId.ReadOnly = true;
             // 
-            // firstNameDgv
+            // firstName
             // 
-            this.firstNameDgv.DataPropertyName = "FirstName";
-            this.firstNameDgv.HeaderText = "FirstName";
-            this.firstNameDgv.Name = "firstNameDgv";
-            this.firstNameDgv.Width = 120;
+            this.firstName.DataPropertyName = "FirstName";
+            this.firstName.HeaderText = "FirstName";
+            this.firstName.Name = "firstName";
+            this.firstName.ReadOnly = true;
             // 
-            // lastNameDgv
+            // lastName
             // 
-            this.lastNameDgv.DataPropertyName = "LastName";
-            this.lastNameDgv.HeaderText = "LastName";
-            this.lastNameDgv.Name = "lastNameDgv";
-            this.lastNameDgv.Width = 120;
+            this.lastName.DataPropertyName = "LastName";
+            this.lastName.HeaderText = "LastName";
+            this.lastName.Name = "lastName";
+            this.lastName.ReadOnly = true;
             // 
-            // specializationDgv
+            // specialization
             // 
-            this.specializationDgv.DataPropertyName = "Specialization";
-            this.specializationDgv.HeaderText = "Specialization";
-            this.specializationDgv.Name = "specializationDgv";
-            this.specializationDgv.Width = 150;
+            this.specialization.DataPropertyName = "Specialization";
+            this.specialization.HeaderText = "Specialization";
+            this.specialization.Name = "specialization";
+            this.specialization.ReadOnly = true;
             // 
-            // phoneDgv
+            // phone
             // 
-            this.phoneDgv.DataPropertyName = "Phone";
-            this.phoneDgv.HeaderText = "Phone";
-            this.phoneDgv.Name = "phoneDgv";
-            this.phoneDgv.Width = 150;
+            this.phone.DataPropertyName = "Phone";
+            this.phone.HeaderText = "Phone";
+            this.phone.Name = "phone";
+            this.phone.ReadOnly = true;
             // 
-            // isAvailableDgv
+            // startTime
             // 
-            this.isAvailableDgv.DataPropertyName = "isAvailable";
-            this.isAvailableDgv.HeaderText = "isAvailable";
-            this.isAvailableDgv.Name = "isAvailableDgv";
+            this.startTime.DataPropertyName = "StartTime";
+            this.startTime.HeaderText = "StartTime";
+            this.startTime.Name = "startTime";
+            this.startTime.ReadOnly = true;
+            // 
+            // endTime
+            // 
+            this.endTime.DataPropertyName = "EndTime";
+            this.endTime.HeaderText = "EndTime";
+            this.endTime.Name = "endTime";
+            this.endTime.ReadOnly = true;
             // 
             // doctorsBindingSource
             // 
@@ -337,18 +355,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1587, 917);
+            this.ClientSize = new System.Drawing.Size(1444, 851);
             this.ControlBox = false;
-            this.Controls.Add(this.saveBtn);
+            this.Controls.Add(this.dataGridViewDoctors);
             this.Controls.Add(this.guna2Panel1);
+            this.Controls.Add(this.BtnAsign);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.updateBtn);
             this.Controls.Add(this.addBtn);
-            this.Controls.Add(this.dataGridViewDoctors);
-            this.Controls.Add(this.chkAvailable);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.specializationText);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.phoneText);
@@ -357,11 +373,12 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.firstNameText);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "doctorsManagerment";
+            this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoctors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.doctorsBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -380,24 +397,23 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox phoneText;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox chkAvailable;
-        private System.Windows.Forms.DataGridView dataGridViewDoctors;
-        private System.Windows.Forms.BindingSource doctorsBindingSource;
         private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.Button updateBtn;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Button clearBtn;
         private System.Windows.Forms.Button ExitBtn;
+        private System.Windows.Forms.Button BtnAsign;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private System.Windows.Forms.Button saveBtn;
+        private Guna.UI2.WinForms.Guna2DataGridView dataGridViewDoctors;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startDateDgv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn endDateDgv;
+        private System.Windows.Forms.BindingSource doctorsBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn doctorId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDgv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDgv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn specializationDgv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDgv;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn isAvailableDgv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StartDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EndDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn specialization;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn endTime;
     }
 }

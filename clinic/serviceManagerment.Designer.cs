@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label1 = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.serviceNameText = new System.Windows.Forms.TextBox();
             this.descriptionText = new System.Windows.Forms.TextBox();
@@ -40,37 +41,32 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxDoctor = new System.Windows.Forms.ComboBox();
-            this.dataGridViewService = new System.Windows.Forms.DataGridView();
-            this.serviceIdDgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.serviceNameDgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.doctorIdDgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
+            this.AddBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.dataGridViewService = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.UpdateBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.DeleteBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.ClearBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.ExitBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.serviceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.doctorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.servicesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.AddBtn = new System.Windows.Forms.Button();
-            this.UpdateBtn = new System.Windows.Forms.Button();
-            this.DeleteBtn = new System.Windows.Forms.Button();
-            this.ClearBtn = new System.Windows.Forms.Button();
-            this.ExitBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).BeginInit();
+            this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.servicesBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label1.Location = new System.Drawing.Point(407, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(156, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Manage Services";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label2.Location = new System.Drawing.Point(60, 154);
+            this.label2.Location = new System.Drawing.Point(53, 193);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(129, 24);
             this.label2.TabIndex = 1;
@@ -79,7 +75,7 @@
             // serviceNameText
             // 
             this.serviceNameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.serviceNameText.Location = new System.Drawing.Point(64, 192);
+            this.serviceNameText.Location = new System.Drawing.Point(57, 231);
             this.serviceNameText.Name = "serviceNameText";
             this.serviceNameText.Size = new System.Drawing.Size(279, 29);
             this.serviceNameText.TabIndex = 2;
@@ -87,7 +83,7 @@
             // descriptionText
             // 
             this.descriptionText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.descriptionText.Location = new System.Drawing.Point(64, 277);
+            this.descriptionText.Location = new System.Drawing.Point(57, 305);
             this.descriptionText.Multiline = true;
             this.descriptionText.Name = "descriptionText";
             this.descriptionText.Size = new System.Drawing.Size(279, 77);
@@ -97,7 +93,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label3.Location = new System.Drawing.Point(60, 239);
+            this.label3.Location = new System.Drawing.Point(53, 278);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 24);
             this.label3.TabIndex = 3;
@@ -106,7 +102,7 @@
             // priceText
             // 
             this.priceText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.priceText.Location = new System.Drawing.Point(64, 390);
+            this.priceText.Location = new System.Drawing.Point(57, 429);
             this.priceText.Name = "priceText";
             this.priceText.Size = new System.Drawing.Size(279, 29);
             this.priceText.TabIndex = 6;
@@ -115,7 +111,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label4.Location = new System.Drawing.Point(60, 357);
+            this.label4.Location = new System.Drawing.Point(53, 402);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 24);
             this.label4.TabIndex = 5;
@@ -125,7 +121,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.label5.Location = new System.Drawing.Point(60, 450);
+            this.label5.Location = new System.Drawing.Point(53, 489);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(136, 24);
             this.label5.TabIndex = 7;
@@ -135,145 +131,242 @@
             // 
             this.comboBoxDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.comboBoxDoctor.FormattingEnabled = true;
-            this.comboBoxDoctor.Location = new System.Drawing.Point(64, 497);
+            this.comboBoxDoctor.Location = new System.Drawing.Point(57, 536);
             this.comboBoxDoctor.Name = "comboBoxDoctor";
             this.comboBoxDoctor.Size = new System.Drawing.Size(279, 32);
             this.comboBoxDoctor.TabIndex = 8;
             // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
+            // AddBtn
+            // 
+            this.AddBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.AddBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.AddBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.AddBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.AddBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.AddBtn.ForeColor = System.Drawing.Color.White;
+            this.AddBtn.Location = new System.Drawing.Point(57, 677);
+            this.AddBtn.Name = "AddBtn";
+            this.AddBtn.Size = new System.Drawing.Size(171, 46);
+            this.AddBtn.TabIndex = 15;
+            this.AddBtn.Text = "Add";
+            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click_1);
+            // 
             // dataGridViewService
             // 
+            this.dataGridViewService.AllowUserToAddRows = false;
+            this.dataGridViewService.AllowUserToDeleteRows = false;
+            this.dataGridViewService.AllowUserToResizeRows = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dataGridViewService.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewService.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewService.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewService.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewService.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewService.ColumnHeadersHeight = 37;
+            this.dataGridViewService.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dataGridViewService.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.serviceIdDgv,
-            this.serviceNameDgv,
-            this.descriptionDgv,
-            this.priceDgv,
-            this.doctorIdDgv});
+            this.serviceId,
+            this.serviceName,
+            this.description,
+            this.price,
+            this.doctorId});
             this.dataGridViewService.DataSource = this.servicesBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewService.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewService.Location = new System.Drawing.Point(505, 144);
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewService.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridViewService.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridViewService.Location = new System.Drawing.Point(493, 154);
             this.dataGridViewService.Name = "dataGridViewService";
-            this.dataGridViewService.Size = new System.Drawing.Size(594, 408);
-            this.dataGridViewService.TabIndex = 9;
-            this.dataGridViewService.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewService_CellContentClick);
+            this.dataGridViewService.ReadOnly = true;
+            this.dataGridViewService.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewService.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridViewService.RowHeadersVisible = false;
+            this.dataGridViewService.RowTemplate.Height = 23;
+            this.dataGridViewService.Size = new System.Drawing.Size(619, 389);
+            this.dataGridViewService.TabIndex = 16;
+            this.dataGridViewService.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewService.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.dataGridViewService.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dataGridViewService.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridViewService.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dataGridViewService.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewService.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridViewService.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dataGridViewService.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridViewService.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewService.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dataGridViewService.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dataGridViewService.ThemeStyle.HeaderStyle.Height = 37;
+            this.dataGridViewService.ThemeStyle.ReadOnly = true;
+            this.dataGridViewService.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewService.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataGridViewService.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.dataGridViewService.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dataGridViewService.ThemeStyle.RowsStyle.Height = 23;
+            this.dataGridViewService.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridViewService.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // serviceIdDgv
+            // label6
             // 
-            this.serviceIdDgv.DataPropertyName = "ServiceId";
-            this.serviceIdDgv.HeaderText = "ServiceId";
-            this.serviceIdDgv.Name = "serviceIdDgv";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.label6.Location = new System.Drawing.Point(463, 32);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(254, 37);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Manage Service ";
             // 
-            // serviceNameDgv
+            // UpdateBtn
             // 
-            this.serviceNameDgv.DataPropertyName = "ServiceName";
-            this.serviceNameDgv.HeaderText = "ServiceName";
-            this.serviceNameDgv.Name = "serviceNameDgv";
+            this.UpdateBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.UpdateBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.UpdateBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.UpdateBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.UpdateBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.UpdateBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.UpdateBtn.ForeColor = System.Drawing.Color.White;
+            this.UpdateBtn.Location = new System.Drawing.Point(434, 677);
+            this.UpdateBtn.Name = "UpdateBtn";
+            this.UpdateBtn.Size = new System.Drawing.Size(171, 46);
+            this.UpdateBtn.TabIndex = 18;
+            this.UpdateBtn.Text = "Update";
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click_1);
             // 
-            // descriptionDgv
+            // DeleteBtn
             // 
-            this.descriptionDgv.DataPropertyName = "Description";
-            this.descriptionDgv.HeaderText = "Description";
-            this.descriptionDgv.Name = "descriptionDgv";
-            this.descriptionDgv.Width = 150;
+            this.DeleteBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.DeleteBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.DeleteBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.DeleteBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.DeleteBtn.FillColor = System.Drawing.Color.Red;
+            this.DeleteBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.DeleteBtn.ForeColor = System.Drawing.Color.White;
+            this.DeleteBtn.Location = new System.Drawing.Point(715, 677);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Size = new System.Drawing.Size(171, 46);
+            this.DeleteBtn.TabIndex = 19;
+            this.DeleteBtn.Text = "Delete";
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click_1);
             // 
-            // priceDgv
+            // ClearBtn
             // 
-            this.priceDgv.DataPropertyName = "Price";
-            this.priceDgv.HeaderText = "Price";
-            this.priceDgv.Name = "priceDgv";
+            this.ClearBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.ClearBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.ClearBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.ClearBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.ClearBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.ClearBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.ClearBtn.ForeColor = System.Drawing.Color.White;
+            this.ClearBtn.Location = new System.Drawing.Point(344, 580);
+            this.ClearBtn.Name = "ClearBtn";
+            this.ClearBtn.Size = new System.Drawing.Size(101, 32);
+            this.ClearBtn.TabIndex = 20;
+            this.ClearBtn.Text = "Clear";
+            this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click_1);
             // 
-            // doctorIdDgv
+            // ExitBtn
             // 
-            this.doctorIdDgv.DataPropertyName = "DoctorId";
-            this.doctorIdDgv.HeaderText = "DoctorId";
-            this.doctorIdDgv.Name = "doctorIdDgv";
+            this.ExitBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.ExitBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.ExitBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.ExitBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.ExitBtn.FillColor = System.Drawing.Color.Black;
+            this.ExitBtn.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.ExitBtn.ForeColor = System.Drawing.Color.White;
+            this.ExitBtn.Location = new System.Drawing.Point(1048, 677);
+            this.ExitBtn.Name = "ExitBtn";
+            this.ExitBtn.Size = new System.Drawing.Size(103, 46);
+            this.ExitBtn.TabIndex = 21;
+            this.ExitBtn.Text = "Exit";
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click_1);
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.guna2Panel1.Controls.Add(this.label6);
+            this.guna2Panel1.Location = new System.Drawing.Point(-8, -5);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(1172, 93);
+            this.guna2Panel1.TabIndex = 22;
+            // 
+            // serviceId
+            // 
+            this.serviceId.DataPropertyName = "ServiceId";
+            this.serviceId.HeaderText = "ServiceId";
+            this.serviceId.Name = "serviceId";
+            this.serviceId.ReadOnly = true;
+            // 
+            // serviceName
+            // 
+            this.serviceName.DataPropertyName = "ServiceName";
+            this.serviceName.HeaderText = "ServiceName";
+            this.serviceName.Name = "serviceName";
+            this.serviceName.ReadOnly = true;
+            // 
+            // description
+            // 
+            this.description.DataPropertyName = "Description";
+            this.description.HeaderText = "Description";
+            this.description.Name = "description";
+            this.description.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.DataPropertyName = "Price";
+            this.price.HeaderText = "Price";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            // 
+            // doctorId
+            // 
+            this.doctorId.DataPropertyName = "DoctorId";
+            this.doctorId.HeaderText = "DoctorId";
+            this.doctorId.Name = "doctorId";
+            this.doctorId.ReadOnly = true;
             // 
             // servicesBindingSource
             // 
             this.servicesBindingSource.DataSource = typeof(clinic.Model.Services);
             // 
-            // AddBtn
-            // 
-            this.AddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.AddBtn.Location = new System.Drawing.Point(43, 672);
-            this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(172, 86);
-            this.AddBtn.TabIndex = 10;
-            this.AddBtn.Text = "Add";
-            this.AddBtn.UseVisualStyleBackColor = true;
-            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
-            // 
-            // UpdateBtn
-            // 
-            this.UpdateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.UpdateBtn.Location = new System.Drawing.Point(238, 672);
-            this.UpdateBtn.Name = "UpdateBtn";
-            this.UpdateBtn.Size = new System.Drawing.Size(172, 86);
-            this.UpdateBtn.TabIndex = 11;
-            this.UpdateBtn.Text = "Update";
-            this.UpdateBtn.UseVisualStyleBackColor = true;
-            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
-            // 
-            // DeleteBtn
-            // 
-            this.DeleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.DeleteBtn.Location = new System.Drawing.Point(424, 672);
-            this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.Size = new System.Drawing.Size(172, 86);
-            this.DeleteBtn.TabIndex = 12;
-            this.DeleteBtn.Text = "Delete";
-            this.DeleteBtn.UseVisualStyleBackColor = true;
-            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
-            // 
-            // ClearBtn
-            // 
-            this.ClearBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.ClearBtn.Location = new System.Drawing.Point(607, 672);
-            this.ClearBtn.Name = "ClearBtn";
-            this.ClearBtn.Size = new System.Drawing.Size(172, 86);
-            this.ClearBtn.TabIndex = 13;
-            this.ClearBtn.Text = "Clear";
-            this.ClearBtn.UseVisualStyleBackColor = true;
-            this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
-            // 
-            // ExitBtn
-            // 
-            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.ExitBtn.Location = new System.Drawing.Point(856, 672);
-            this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(172, 86);
-            this.ExitBtn.TabIndex = 14;
-            this.ExitBtn.Text = "Exit";
-            this.ExitBtn.UseVisualStyleBackColor = true;
-            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
-            // 
             // serviceManagerment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1312, 809);
+            this.ClientSize = new System.Drawing.Size(1163, 767);
+            this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.ClearBtn);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.UpdateBtn);
-            this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.dataGridViewService);
+            this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.comboBoxDoctor);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.priceText);
@@ -282,12 +375,14 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.serviceNameText);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "serviceManagerment";
             this.Text = "ServiceManagerment";
+            this.Load += new System.EventHandler(this.serviceManagerment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewService)).EndInit();
+            this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.servicesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -295,8 +390,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox serviceNameText;
         private System.Windows.Forms.TextBox descriptionText;
@@ -305,17 +398,23 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBoxDoctor;
-        private System.Windows.Forms.DataGridView dataGridViewService;
-        private System.Windows.Forms.Button AddBtn;
-        private System.Windows.Forms.Button UpdateBtn;
-        private System.Windows.Forms.Button DeleteBtn;
-        private System.Windows.Forms.Button ClearBtn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn serviceIdDgv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn serviceNameDgv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDgv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDgv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn doctorIdDgv;
         private System.Windows.Forms.BindingSource servicesBindingSource;
-        private System.Windows.Forms.Button ExitBtn;
+        private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow1;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
+        private Guna.UI2.WinForms.Guna2DataGridView dataGridViewService;
+        private Guna.UI2.WinForms.Guna2Button AddBtn;
+        private Guna.UI2.WinForms.Guna2Button ExitBtn;
+        private Guna.UI2.WinForms.Guna2Button ClearBtn;
+        private Guna.UI2.WinForms.Guna2Button DeleteBtn;
+        private Guna.UI2.WinForms.Guna2Button UpdateBtn;
+        private System.Windows.Forms.Label label6;
+        private Guna.UI2.WinForms.Guna2DataGridViewStyler guna2DataGridViewStyler1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn serviceId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn serviceName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn doctorId;
+        private Guna.UI2.WinForms.Guna2DataGridViewStyler guna2DataGridViewStyler2;
     }
 }
