@@ -206,29 +206,34 @@ namespace clinic.Model
 
 
 
-        public List<DoctorAvailables> GetAvailableDoctors(int serviceId, DateTime selectedDate)
+        public List<Doctors> GetAvailableDoctors(int serviceId, DateTime selectedDate)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
                 // SQL query to fetch available doctors for the selected service and date
                 string sqlQuery = @"
-            SELECT d.*
-            FROM Doctors d
-            INNER JOIN DoctorServices ds ON d.DoctorId = ds.DoctorId
-            WHERE ds.ServiceId = @ServiceId
-            AND d.DoctorId NOT IN (
-                SELECT a.DoctorId
-                FROM Appointments a
-                WHERE CAST(a.AppointmentDate AS DATE) = CAST(@SelectedDate AS DATE)
-            )";
+                    SELECT d.*
+                    FROM Doctors d
+                    INNER JOIN Services ds ON d.DoctorId = ds.DoctorId
+                    WHERE ds.ServiceId = @ServiceId
+                    AND d.DoctorId NOT IN (
+                        SELECT a.DoctorId
+                        FROM Appointments a
+                        WHERE CAST(a.AppointmentDate AS DATE) = CAST(@SelectedDate AS DATE)
+                    )";
 
                 var availableDoctors = db.Query<Doctors>(sqlQuery, new { ServiceId = serviceId, SelectedDate = selectedDate }).ToList();
-                return availableDoctors;
 
-        
+                if (availableDoctors == null)
+                {
+                    availableDoctors = new List<Doctors>();
+                }
+
+                return availableDoctors;
             }
         }
-        
+
+
 
 
 
@@ -290,7 +295,7 @@ namespace clinic.Model
 
         // appointment
 
-        public void AdddAppointment(Appiontment appiontment)
+        public void AdddAppointment(Appointment appiontment)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
@@ -298,14 +303,24 @@ namespace clinic.Model
                 db.Execute(sql, appiontment);
             }
         }
-        public void UpdateAppointment(Appiontment appiontment)
+        public void UpdateAppointment(Appointment appointment)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "UPDATE appointments  SET PatientId = @PatientId,  ServiceId = @ServiceId, Status = @Status, Note = @Note, AppointmentDate = @AppointmentDate WHERE AppointmentId = @AppointmentId";
-                db.Execute(sql, appiontment);
+                string sql = @"
+                UPDATE appointments
+                SET PatientId = @PatientId,
+                    DoctorId = @DoctorId,
+                    ServiceId = @ServiceId,
+                    AppointmentDate = @AppointmentDate,
+                    Status = @Status,
+                    Note = @Note
+                WHERE AppointmentId = @AppointmentId;";
+
+                db.Execute(sql, appointment);
             }
         }
+
 
         public void DeleteAppointment(int appiontmentId)
         {
@@ -315,61 +330,86 @@ namespace clinic.Model
                 db.Execute(sql, new { AppointmentId = appiontmentId });
             }
         }
-        public List<Appiontment> GetAppiontments()
+        public List<Appointment> GetAppointments()
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
                 string sql = @"
-            SELECT a.AppointmentId, a.PatientId, a.DoctorId, a.AppointmentDate, a.Status, a.ServiceId, a.Note,
-                   p.firstName + ' ' + p.lastName AS PatientName, 
-                   d.firstName + ' ' + d.lastName AS DoctorName, 
-                   s.serviceName AS ServiceName
-            FROM appointments a
-            INNER JOIN patients p ON a.PatientId = p.patientId
-            INNER JOIN doctors d ON a.DoctorId = d.doctorId
-            INNER JOIN services s ON a.ServiceId = s.serviceId";
+                SELECT a.AppointmentId, a.PatientId, a.DoctorId, a.AppointmentDate, a.Status, a.ServiceId, a.Note,
+                       p.firstName + ' ' + p.lastName AS PatientName, 
+                       d.firstName + ' ' + d.lastName AS DoctorName, 
+                       s.serviceName AS ServiceName,
+                       pm.TotalCost, pm.AmountPaid, pm.PaymentMethod
+                FROM appointments a
+                INNER JOIN patients p ON a.PatientId = p.patientId
+                INNER JOIN doctors d ON a.DoctorId = d.doctorId
+                INNER JOIN services s ON a.ServiceId = s.serviceId
+                LEFT JOIN Payments pm ON a.AppointmentId = pm.AppointmentId";
 
-                var result = db.Query<Appiontment>(sql).ToList();
+                var result = db.Query<Appointment>(sql).ToList();
                 return result;
             }
         }
-        private void searchAppointments(string searchText)
+        public List<Appointment> SearchAppointmentsByPatientName(string patientName)
         {
-            using (IDbConnection db =  new SqlConnection(_connectionString))
+            using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                string query = "SELECT * FROM Appointments WHERE PatientName LIKE @search OR DoctorName LIKE @search";
-                var data = db.Query<Appiontment>(query, new { search = "%" + searchText + "%" }).ToList();
+                string sql = @"
+                SELECT a.AppointmentId, a.PatientId, a.DoctorId, a.AppointmentDate, a.Status, a.ServiceId, a.Note,
+                       p.firstName + ' ' + p.lastName AS PatientName, 
+                       d.firstName + ' ' + d.lastName AS DoctorName, 
+                       s.serviceName AS ServiceName,
+                       pm.TotalCost, pm.AmountPaid, pm.PaymentMethod
+                FROM appointments a
+                INNER JOIN patients p ON a.PatientId = p.patientId
+                INNER JOIN doctors d ON a.DoctorId = d.doctorId
+                INNER JOIN services s ON a.ServiceId = s.serviceId
+                LEFT JOIN Payments pm ON a.AppointmentId = pm.AppointmentId
+                WHERE p.firstName + ' ' + p.lastName LIKE @PatientName";
+
+                var result = db.Query<Appointment>(sql, new { PatientName = "%" + patientName + "%" }).ToList();
+                return result;
+            }
+        }
+
+        public List<Appointment> GetAppointmentsByPatientName(string patientName)
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = @"
+        SELECT a.AppointmentId, a.PatientId, a.DoctorId, a.AppointmentDate, a.Status, a.ServiceId, a.Note,
+               p.firstName + ' ' + p.lastName AS PatientName, 
+               d.firstName + ' ' + d.lastName AS DoctorName, 
+               s.serviceName AS ServiceName,
+               pm.TotalCost, pm.AmountPaid, pm.PaymentMethod
+        FROM appointments a
+        INNER JOIN patients p ON a.PatientId = p.patientId
+        INNER JOIN doctors d ON a.DoctorId = d.doctorId
+        INNER JOIN services s ON a.ServiceId = s.serviceId
+        LEFT JOIN Payments pm ON a.AppointmentId = pm.AppointmentId
+        WHERE p.firstName + ' ' + p.lastName LIKE @PatientName";
+
+                var result = db.Query<Appointment>(sql, new { PatientName = "%" + patientName + "%" }).ToList();
+                return result;
             }
         }
 
 
         //payment
-        public void InsertPayment(int appointmentId, decimal amountPaid, decimal totalCost, string paymentMethod)
+        public void UpdatePayment(Appointment appointment)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                var sqlQuery = "INSERT INTO Payments (AppointmentId, AmountPaid, TotalCost, PaymentMethod, PaymentDate) " +
-                               "VALUES (@AppointmentId, @AmountPaid, @TotalCost, @PaymentMethod, @PaymentDate)";
-                db.Execute(sqlQuery, new { appointmentId, amountPaid, totalCost, paymentMethod, PaymentDate = DateTime.Now });
+                string sql = @"
+                UPDATE Payments
+                SET TotalCost = @TotalCost,
+                    AmountPaid = @AmountPaid,
+                    PaymentMethod = @PaymentMethod
+                WHERE AppointmentId = @AppointmentId;";
+
+                db.Execute(sql, appointment);
             }
         }
-
-        public void UpdatePayment(int paymentId, decimal amountPaid, decimal totalCost, string paymentMethod)
-        {
-            using (IDbConnection db = new SqlConnection(_connectionString))
-            {
-                var sqlQuery = "UPDATE Payments SET " +
-                               "AmountPaid = @AmountPaid, " +
-                               "TotalCost = @TotalCost, " +
-                               "PaymentMethod = @PaymentMethod, " +
-                               "PaymentDate = @PaymentDate " +
-                               "WHERE PaymentId = @PaymentId";
-                db.Execute(sqlQuery, new { paymentId, amountPaid, totalCost, paymentMethod, PaymentDate = DateTime.Now });
-            }
-        }
-
-
-
         public int InsertAppointment(int patientId, int doctorId, int serviceId, DateTime appointmentDateTime, string status, string notes, decimal totalCost, decimal amountPaid, string paymentMethod)
         {
             using (var conn = new SqlConnection(connection.Conn("clinic_db")))
@@ -380,8 +420,8 @@ namespace clinic.Model
                     try
                     {
                         string insertAppointmentQuery = @"
-                        INSERT INTO Appointments (patientId, doctorId, serviceId, appointmentDate, status, note, totalCost)
-                        VALUES (@patientId, @doctorId, @serviceId, @appointmentDateTime, @status, @notes, @totalCost);
+                        INSERT INTO Appointments (patientId, doctorId, serviceId, appointmentDate, status, note)
+                        VALUES (@patientId, @doctorId, @serviceId, @appointmentDateTime, @status, @notes);
                         SELECT CAST(SCOPE_IDENTITY() as int);";
 
                         int appointmentId = conn.ExecuteScalar<int>(insertAppointmentQuery, new
@@ -392,21 +432,21 @@ namespace clinic.Model
                             appointmentDateTime,
                             status,
                             notes,
-                            totalCost
                         }, transaction);
 
-                        //string insertPaymentQuery = @"
-                        //INSERT INTO Payments (appointmentId, amount, paymentDate, paymentMethod, status)
-                        //VALUES (@appointmentId, @amount, GETDATE(), @paymentMethod, 'Completed');";
+                        string insertPaymentQuery = @"
+                        INSERT INTO Payments (appointmentId, amountPaid, paymentDate, paymentMethod, totalCost, status)
+                        VALUES (@appointmentId, @amountPaid, GETDATE(), @paymentMethod, @totalCost , 'Completed');";
 
-                        //conn.Execute(insertPaymentQuery, new
-                        //{
-                        //    appointmentId,
-                        //    amount = amountPaid,
-                        //    paymentMethod,
-                        //}, transaction);
+                        conn.Execute(insertPaymentQuery, new
+                        {
+                            appointmentId,
+                            amountPaid,
+                            paymentMethod,
+                            totalCost,
+                        }, transaction);
 
-                        //transaction.Commit();
+                        transaction.Commit();
                         return appointmentId;
                     }
                     catch (Exception ex)

@@ -21,7 +21,6 @@ namespace clinic
         private void availableDoctor_Load(object sender, EventArgs e)
         {
             LoadDoctorsIntoComboBox();
-            LoadAvailable();
             DvgAvailableDoctor.SelectionChanged += DvgAvailableDoctor_SelectionChanged;
         }
 
@@ -41,17 +40,27 @@ namespace clinic
             }
         }
 
-        private void LoadAvailable()
+        private void LoadAvailable(int serviceId, DateTime selectedDate)
         {
             try
             {
-                var availableDoctors = _dataAccess.GetAvailableDoctors();
-                DvgAvailableDoctor.DataSource = availableDoctors;
-                DvgAvailableDoctor.Columns["AvailableId"].Visible = false;
+                List<Doctors> availableDoctors = _dataAccess.GetAvailableDoctors(serviceId, selectedDate);
+
+                if (availableDoctors == null || availableDoctors.Count == 0)
+                {
+                    MessageBox.Show("No doctors available for the selected service and date.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    comboBoxDoctor.DataSource = null;
+                    return;
+                }
+
+                comboBoxDoctor.DataSource = availableDoctors;
+                comboBoxDoctor.DisplayMember = "FirstName";
+                comboBoxDoctor.ValueMember = "DoctorId";
+                comboBoxDoctor.SelectedIndex = availableDoctors.Count > 0 ? 0 : -1;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loading doctors: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void Clear()
@@ -88,7 +97,7 @@ namespace clinic
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            LoadAvailable();
+      
         }
 
         private void BtnUpdate_Click(object sender, EventArgs e)
@@ -116,7 +125,7 @@ namespace clinic
                 {
                     MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                LoadAvailable();
+            
             }
         }
 
@@ -146,7 +155,6 @@ namespace clinic
                     }
 
                 }
-                LoadAvailable();
             }
             else
             {

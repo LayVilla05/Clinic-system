@@ -10,10 +10,12 @@ namespace clinic.Model
     {
         public int PaymentId { get; set; }
         public int AppointmentId { get; set; }
-        public string ServiceName { get; set; }
-        public decimal Amount { get; set; }
+        public decimal AmountPaid { get; set; }
         public DateTime PaymentDate { get; set; }
-        public string  PaymentMethodName { get; set; }
+        public string  PaymentMethod { get; set; }
+        public decimal TotalCost { get; set; }
+        public string status { get; set; }
+
 
     }
 }

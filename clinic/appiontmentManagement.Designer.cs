@@ -31,10 +31,10 @@ namespace clinic
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,9 +53,23 @@ namespace clinic
             this.label7 = new System.Windows.Forms.Label();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.dataGridViewAppointment = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.appointmentI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patientI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.doctorI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serviceI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patientNam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.doctorNam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serviceNam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.not = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.appointmentDat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalCos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amountPai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymentMetho = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.searchPatient = new Guna.UI2.WinForms.Guna2TextBox();
             this.search = new Guna.UI2.WinForms.Guna2Button();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBoxPaymentMethod = new System.Windows.Forms.ComboBox();
@@ -65,23 +79,10 @@ namespace clinic
             this.label11 = new System.Windows.Forms.Label();
             this.btnSaveAppointment = new Guna.UI2.WinForms.Guna2Button();
             this.comboBoxStatus = new System.Windows.Forms.ComboBox();
-            this.PaymentMethod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AmountPaid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.appointmentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.doctorName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.serviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.note = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.appointmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patientId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.doctorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.serviceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.appiontmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppointment)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).BeginInit();
             this.guna2Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.appiontmentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -96,7 +97,7 @@ namespace clinic
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 215);
+            this.label2.Location = new System.Drawing.Point(14, 250);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(129, 24);
             this.label2.TabIndex = 1;
@@ -105,7 +106,7 @@ namespace clinic
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 394);
+            this.label3.Location = new System.Drawing.Point(14, 429);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 24);
             this.label3.TabIndex = 3;
@@ -114,7 +115,7 @@ namespace clinic
             // comboBoxPetient
             // 
             this.comboBoxPetient.FormattingEnabled = true;
-            this.comboBoxPetient.Location = new System.Drawing.Point(36, 155);
+            this.comboBoxPetient.Location = new System.Drawing.Point(18, 190);
             this.comboBoxPetient.Name = "comboBoxPetient";
             this.comboBoxPetient.Size = new System.Drawing.Size(225, 32);
             this.comboBoxPetient.TabIndex = 5;
@@ -122,7 +123,7 @@ namespace clinic
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 304);
+            this.label4.Location = new System.Drawing.Point(13, 339);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(121, 24);
             this.label4.TabIndex = 6;
@@ -131,7 +132,7 @@ namespace clinic
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(32, 118);
+            this.label5.Location = new System.Drawing.Point(14, 153);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(123, 24);
             this.label5.TabIndex = 8;
@@ -140,7 +141,7 @@ namespace clinic
             // comboBoxDoctor
             // 
             this.comboBoxDoctor.FormattingEnabled = true;
-            this.comboBoxDoctor.Location = new System.Drawing.Point(35, 341);
+            this.comboBoxDoctor.Location = new System.Drawing.Point(17, 376);
             this.comboBoxDoctor.Name = "comboBoxDoctor";
             this.comboBoxDoctor.Size = new System.Drawing.Size(225, 32);
             this.comboBoxDoctor.TabIndex = 7;
@@ -148,7 +149,7 @@ namespace clinic
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(32, 629);
+            this.label6.Location = new System.Drawing.Point(14, 664);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(160, 24);
             this.label6.TabIndex = 10;
@@ -159,7 +160,7 @@ namespace clinic
             this.dtpAppointment.CustomFormat = "dd/MM/yy hh:mm";
             this.dtpAppointment.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpAppointment.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.dtpAppointment.Location = new System.Drawing.Point(35, 678);
+            this.dtpAppointment.Location = new System.Drawing.Point(17, 713);
             this.dtpAppointment.Name = "dtpAppointment";
             this.dtpAppointment.ShowUpDown = true;
             this.dtpAppointment.Size = new System.Drawing.Size(226, 29);
@@ -168,7 +169,7 @@ namespace clinic
             // comboBoxService
             // 
             this.comboBoxService.FormattingEnabled = true;
-            this.comboBoxService.Location = new System.Drawing.Point(36, 256);
+            this.comboBoxService.Location = new System.Drawing.Point(18, 291);
             this.comboBoxService.Name = "comboBoxService";
             this.comboBoxService.Size = new System.Drawing.Size(225, 32);
             this.comboBoxService.TabIndex = 12;
@@ -224,7 +225,7 @@ namespace clinic
             // 
             // noteText
             // 
-            this.noteText.Location = new System.Drawing.Point(36, 526);
+            this.noteText.Location = new System.Drawing.Point(18, 561);
             this.noteText.Multiline = true;
             this.noteText.Name = "noteText";
             this.noteText.Size = new System.Drawing.Size(225, 87);
@@ -233,7 +234,7 @@ namespace clinic
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(32, 486);
+            this.label7.Location = new System.Drawing.Point(14, 521);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(50, 24);
             this.label7.TabIndex = 18;
@@ -254,63 +255,63 @@ namespace clinic
             this.dataGridViewAppointment.AllowUserToAddRows = false;
             this.dataGridViewAppointment.AllowUserToDeleteRows = false;
             this.dataGridViewAppointment.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dataGridViewAppointment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dataGridViewAppointment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewAppointment.AutoGenerateColumns = false;
             this.dataGridViewAppointment.BackgroundColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAppointment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAppointment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewAppointment.ColumnHeadersHeight = 26;
             this.dataGridViewAppointment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dataGridViewAppointment.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.appointmentId,
-            this.patientName,
-            this.doctorName,
-            this.serviceName,
-            this.note,
-            this.appointmentDate,
-            this.PaymentMethod,
-            this.AmountPaid,
-            this.totalCost,
-            this.patientId,
-            this.doctorId,
-            this.status,
-            this.serviceId});
-            this.dataGridViewAppointment.DataSource = this.appiontmentBindingSource;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewAppointment.DefaultCellStyle = dataGridViewCellStyle7;
+            this.appointmentI,
+            this.patientI,
+            this.doctorI,
+            this.serviceI,
+            this.patientNam,
+            this.doctorNam,
+            this.serviceNam,
+            this.statu,
+            this.not,
+            this.appointmentDat,
+            this.totalCos,
+            this.amountPai,
+            this.paymentMetho});
+            this.dataGridViewAppointment.DataSource = this.appointmentBindingSource;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewAppointment.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewAppointment.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dataGridViewAppointment.Location = new System.Drawing.Point(586, 131);
+            this.dataGridViewAppointment.Location = new System.Drawing.Point(564, 129);
             this.dataGridViewAppointment.Name = "dataGridViewAppointment";
             this.dataGridViewAppointment.ReadOnly = true;
             this.dataGridViewAppointment.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAppointment.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAppointment.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewAppointment.RowHeadersVisible = false;
             this.dataGridViewAppointment.RowTemplate.Height = 32;
-            this.dataGridViewAppointment.Size = new System.Drawing.Size(1013, 487);
+            this.dataGridViewAppointment.Size = new System.Drawing.Size(1013, 578);
             this.dataGridViewAppointment.TabIndex = 21;
             this.dataGridViewAppointment.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dataGridViewAppointment.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -334,6 +335,101 @@ namespace clinic
             this.dataGridViewAppointment.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridViewAppointment.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
+            // appointmentI
+            // 
+            this.appointmentI.DataPropertyName = "AppointmentId";
+            this.appointmentI.HeaderText = "AppointmentId";
+            this.appointmentI.Name = "appointmentI";
+            this.appointmentI.ReadOnly = true;
+            // 
+            // patientI
+            // 
+            this.patientI.DataPropertyName = "PatientId";
+            this.patientI.HeaderText = "PatientId";
+            this.patientI.Name = "patientI";
+            this.patientI.ReadOnly = true;
+            // 
+            // doctorI
+            // 
+            this.doctorI.DataPropertyName = "DoctorId";
+            this.doctorI.HeaderText = "DoctorId";
+            this.doctorI.Name = "doctorI";
+            this.doctorI.ReadOnly = true;
+            // 
+            // serviceI
+            // 
+            this.serviceI.DataPropertyName = "ServiceId";
+            this.serviceI.HeaderText = "ServiceId";
+            this.serviceI.Name = "serviceI";
+            this.serviceI.ReadOnly = true;
+            // 
+            // patientNam
+            // 
+            this.patientNam.DataPropertyName = "PatientName";
+            this.patientNam.HeaderText = "PatientName";
+            this.patientNam.Name = "patientNam";
+            this.patientNam.ReadOnly = true;
+            // 
+            // doctorNam
+            // 
+            this.doctorNam.DataPropertyName = "DoctorName";
+            this.doctorNam.HeaderText = "DoctorName";
+            this.doctorNam.Name = "doctorNam";
+            this.doctorNam.ReadOnly = true;
+            // 
+            // serviceNam
+            // 
+            this.serviceNam.DataPropertyName = "ServiceName";
+            this.serviceNam.HeaderText = "ServiceName";
+            this.serviceNam.Name = "serviceNam";
+            this.serviceNam.ReadOnly = true;
+            // 
+            // statu
+            // 
+            this.statu.DataPropertyName = "Status";
+            this.statu.HeaderText = "Status";
+            this.statu.Name = "statu";
+            this.statu.ReadOnly = true;
+            // 
+            // not
+            // 
+            this.not.DataPropertyName = "Note";
+            this.not.HeaderText = "Note";
+            this.not.Name = "not";
+            this.not.ReadOnly = true;
+            // 
+            // appointmentDat
+            // 
+            this.appointmentDat.DataPropertyName = "AppointmentDate";
+            this.appointmentDat.HeaderText = "AppointmentDate";
+            this.appointmentDat.Name = "appointmentDat";
+            this.appointmentDat.ReadOnly = true;
+            // 
+            // totalCos
+            // 
+            this.totalCos.DataPropertyName = "TotalCost";
+            this.totalCos.HeaderText = "TotalCost";
+            this.totalCos.Name = "totalCos";
+            this.totalCos.ReadOnly = true;
+            // 
+            // amountPai
+            // 
+            this.amountPai.DataPropertyName = "AmountPaid";
+            this.amountPai.HeaderText = "AmountPaid";
+            this.amountPai.Name = "amountPai";
+            this.amountPai.ReadOnly = true;
+            // 
+            // paymentMetho
+            // 
+            this.paymentMetho.DataPropertyName = "PaymentMethod";
+            this.paymentMetho.HeaderText = "PaymentMethod";
+            this.paymentMetho.Name = "paymentMetho";
+            this.paymentMetho.ReadOnly = true;
+            // 
+            // appointmentBindingSource
+            // 
+            this.appointmentBindingSource.DataSource = typeof(clinic.Model.Appointment);
+            // 
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.MediumBlue;
@@ -353,27 +449,27 @@ namespace clinic
             this.label8.TabIndex = 23;
             this.label8.Text = "Manage Patients";
             // 
-            // guna2TextBox1
+            // searchPatient
             // 
-            this.guna2TextBox1.Animated = true;
-            this.guna2TextBox1.BorderRadius = 14;
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(1149, 80);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PasswordChar = '\0';
-            this.guna2TextBox1.PlaceholderText = "Search Patient";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(270, 43);
-            this.guna2TextBox1.TabIndex = 23;
+            this.searchPatient.Animated = true;
+            this.searchPatient.BorderRadius = 14;
+            this.searchPatient.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchPatient.DefaultText = "";
+            this.searchPatient.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.searchPatient.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.searchPatient.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.searchPatient.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.searchPatient.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.searchPatient.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.searchPatient.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.searchPatient.Location = new System.Drawing.Point(30, 82);
+            this.searchPatient.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.searchPatient.Name = "searchPatient";
+            this.searchPatient.PasswordChar = '\0';
+            this.searchPatient.PlaceholderText = "Search Patient";
+            this.searchPatient.SelectedText = "";
+            this.searchPatient.Size = new System.Drawing.Size(270, 43);
+            this.searchPatient.TabIndex = 23;
             // 
             // search
             // 
@@ -386,7 +482,7 @@ namespace clinic
             this.search.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.search.Font = new System.Drawing.Font("Segoe UI", 14.25F);
             this.search.ForeColor = System.Drawing.Color.White;
-            this.search.Location = new System.Drawing.Point(1447, 80);
+            this.search.Location = new System.Drawing.Point(328, 82);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(110, 43);
             this.search.TabIndex = 24;
@@ -396,7 +492,7 @@ namespace clinic
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(312, 118);
+            this.label9.Location = new System.Drawing.Point(294, 153);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(152, 24);
             this.label9.TabIndex = 27;
@@ -405,7 +501,7 @@ namespace clinic
             // comboBoxPaymentMethod
             // 
             this.comboBoxPaymentMethod.FormattingEnabled = true;
-            this.comboBoxPaymentMethod.Location = new System.Drawing.Point(316, 155);
+            this.comboBoxPaymentMethod.Location = new System.Drawing.Point(298, 190);
             this.comboBoxPaymentMethod.Name = "comboBoxPaymentMethod";
             this.comboBoxPaymentMethod.Size = new System.Drawing.Size(225, 32);
             this.comboBoxPaymentMethod.TabIndex = 26;
@@ -413,7 +509,7 @@ namespace clinic
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(312, 215);
+            this.label10.Location = new System.Drawing.Point(294, 250);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(118, 24);
             this.label10.TabIndex = 25;
@@ -421,7 +517,7 @@ namespace clinic
             // 
             // textBoxAmountPaid
             // 
-            this.textBoxAmountPaid.Location = new System.Drawing.Point(316, 259);
+            this.textBoxAmountPaid.Location = new System.Drawing.Point(298, 294);
             this.textBoxAmountPaid.Name = "textBoxAmountPaid";
             this.textBoxAmountPaid.Size = new System.Drawing.Size(225, 29);
             this.textBoxAmountPaid.TabIndex = 28;
@@ -429,7 +525,7 @@ namespace clinic
             // textBoxTotalCost
             // 
             this.textBoxTotalCost.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxTotalCost.Location = new System.Drawing.Point(316, 363);
+            this.textBoxTotalCost.Location = new System.Drawing.Point(298, 398);
             this.textBoxTotalCost.Name = "textBoxTotalCost";
             this.textBoxTotalCost.Size = new System.Drawing.Size(225, 22);
             this.textBoxTotalCost.TabIndex = 30;
@@ -437,7 +533,7 @@ namespace clinic
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(312, 313);
+            this.label11.Location = new System.Drawing.Point(294, 348);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(93, 24);
             this.label11.TabIndex = 29;
@@ -451,128 +547,38 @@ namespace clinic
             this.btnSaveAppointment.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnSaveAppointment.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.btnSaveAppointment.ForeColor = System.Drawing.Color.White;
-            this.btnSaveAppointment.Location = new System.Drawing.Point(292, 662);
+            this.btnSaveAppointment.Location = new System.Drawing.Point(274, 697);
             this.btnSaveAppointment.Name = "btnSaveAppointment";
             this.btnSaveAppointment.Size = new System.Drawing.Size(260, 45);
             this.btnSaveAppointment.TabIndex = 31;
             this.btnSaveAppointment.Text = "Save Appointment";
+            this.btnSaveAppointment.Click += new System.EventHandler(this.btnSaveAppointment_Click);
             // 
             // comboBoxStatus
             // 
             this.comboBoxStatus.FormattingEnabled = true;
-            this.comboBoxStatus.Location = new System.Drawing.Point(36, 441);
+            this.comboBoxStatus.Location = new System.Drawing.Point(18, 476);
             this.comboBoxStatus.Name = "comboBoxStatus";
             this.comboBoxStatus.Size = new System.Drawing.Size(225, 32);
             this.comboBoxStatus.TabIndex = 32;
             // 
-            // PaymentMethod
+            // guna2Button1
             // 
-            this.PaymentMethod.DataPropertyName = "PaymentMethod";
-            this.PaymentMethod.HeaderText = "PaymentMethod";
-            this.PaymentMethod.Name = "PaymentMethod";
-            this.PaymentMethod.ReadOnly = true;
-            // 
-            // AmountPaid
-            // 
-            this.AmountPaid.DataPropertyName = "AmountPaid";
-            this.AmountPaid.HeaderText = "AmountPaid";
-            this.AmountPaid.Name = "AmountPaid";
-            this.AmountPaid.ReadOnly = true;
-            // 
-            // totalCost
-            // 
-            this.totalCost.DataPropertyName = "TotalCost";
-            this.totalCost.HeaderText = "Total ";
-            this.totalCost.Name = "totalCost";
-            this.totalCost.ReadOnly = true;
-            // 
-            // appointmentId
-            // 
-            this.appointmentId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.appointmentId.DataPropertyName = "AppointmentId";
-            this.appointmentId.FillWeight = 99.8308F;
-            this.appointmentId.HeaderText = "AppointmentId";
-            this.appointmentId.Name = "appointmentId";
-            this.appointmentId.ReadOnly = true;
-            this.appointmentId.Width = 155;
-            // 
-            // patientName
-            // 
-            this.patientName.DataPropertyName = "PatientName";
-            this.patientName.FillWeight = 99.8308F;
-            this.patientName.HeaderText = "PatientName";
-            this.patientName.Name = "patientName";
-            this.patientName.ReadOnly = true;
-            // 
-            // doctorName
-            // 
-            this.doctorName.DataPropertyName = "DoctorName";
-            this.doctorName.FillWeight = 99.8308F;
-            this.doctorName.HeaderText = "DoctorName";
-            this.doctorName.Name = "doctorName";
-            this.doctorName.ReadOnly = true;
-            // 
-            // serviceName
-            // 
-            this.serviceName.DataPropertyName = "ServiceName";
-            this.serviceName.FillWeight = 99.8308F;
-            this.serviceName.HeaderText = "ServiceName";
-            this.serviceName.Name = "serviceName";
-            this.serviceName.ReadOnly = true;
-            // 
-            // note
-            // 
-            this.note.DataPropertyName = "Note";
-            this.note.FillWeight = 99.8308F;
-            this.note.HeaderText = "Note";
-            this.note.Name = "note";
-            this.note.ReadOnly = true;
-            // 
-            // appointmentDate
-            // 
-            this.appointmentDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.appointmentDate.DataPropertyName = "AppointmentDate";
-            this.appointmentDate.FillWeight = 101.5228F;
-            this.appointmentDate.HeaderText = "AppointmentDate";
-            this.appointmentDate.Name = "appointmentDate";
-            this.appointmentDate.ReadOnly = true;
-            this.appointmentDate.Width = 178;
-            // 
-            // patientId
-            // 
-            this.patientId.DataPropertyName = "PatientId";
-            this.patientId.FillWeight = 99.8308F;
-            this.patientId.HeaderText = "PatientId";
-            this.patientId.Name = "patientId";
-            this.patientId.ReadOnly = true;
-            // 
-            // doctorId
-            // 
-            this.doctorId.DataPropertyName = "DoctorId";
-            this.doctorId.FillWeight = 99.8308F;
-            this.doctorId.HeaderText = "DoctorId";
-            this.doctorId.Name = "doctorId";
-            this.doctorId.ReadOnly = true;
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "Status";
-            this.status.FillWeight = 99.8308F;
-            this.status.HeaderText = "Status";
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
-            // 
-            // serviceId
-            // 
-            this.serviceId.DataPropertyName = "ServiceId";
-            this.serviceId.FillWeight = 99.8308F;
-            this.serviceId.HeaderText = "ServiceId";
-            this.serviceId.Name = "serviceId";
-            this.serviceId.ReadOnly = true;
-            // 
-            // appiontmentBindingSource
-            // 
-            this.appiontmentBindingSource.DataSource = typeof(clinic.Model.Appiontment);
+            this.guna2Button1.Animated = true;
+            this.guna2Button1.BorderRadius = 14;
+            this.guna2Button1.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.SeaGreen;
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 14.25F);
+            this.guna2Button1.ForeColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.Location = new System.Drawing.Point(1334, 80);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(110, 43);
+            this.guna2Button1.TabIndex = 33;
+            this.guna2Button1.Text = "Report";
             // 
             // appiontmentManagement
             // 
@@ -580,6 +586,7 @@ namespace clinic
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1601, 886);
+            this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.comboBoxStatus);
             this.Controls.Add(this.btnSaveAppointment);
             this.Controls.Add(this.textBoxTotalCost);
@@ -589,7 +596,7 @@ namespace clinic
             this.Controls.Add(this.comboBoxPaymentMethod);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.search);
-            this.Controls.Add(this.guna2TextBox1);
+            this.Controls.Add(this.searchPatient);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.dataGridViewAppointment);
             this.Controls.Add(this.ExitBtn);
@@ -617,9 +624,9 @@ namespace clinic
             this.Text = "Add";
             this.Load += new System.EventHandler(this.appiontmentManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppointment)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.appiontmentBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -653,12 +660,11 @@ namespace clinic
         private System.Windows.Forms.DataGridViewTextBoxColumn noteDgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn ServiceIdDgv;
-        private System.Windows.Forms.BindingSource appiontmentBindingSource;
         private System.Windows.Forms.Button ExitBtn;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewAppointment;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.Label label8;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox searchPatient;
         private Guna.UI2.WinForms.Guna2Button search;
         private Guna.UI2.WinForms.Guna2DataGridViewStyler guna2DataGridViewStyler1;
         private Label label9;
@@ -670,17 +676,32 @@ namespace clinic
         private Guna.UI2.WinForms.Guna2Button btnSaveAppointment;
         private ComboBox comboBoxStatus;
         private DataGridViewTextBoxColumn appointmentId;
+        private DataGridViewTextBoxColumn patientId;
+        private DataGridViewTextBoxColumn doctorId;
+        private DataGridViewTextBoxColumn serviceId;
         private DataGridViewTextBoxColumn patientName;
         private DataGridViewTextBoxColumn doctorName;
         private DataGridViewTextBoxColumn serviceName;
-        private DataGridViewTextBoxColumn note;
         private DataGridViewTextBoxColumn appointmentDate;
-        private DataGridViewTextBoxColumn PaymentMethod;
-        private DataGridViewTextBoxColumn AmountPaid;
-        private DataGridViewTextBoxColumn totalCost;
-        private DataGridViewTextBoxColumn patientId;
-        private DataGridViewTextBoxColumn doctorId;
         private DataGridViewTextBoxColumn status;
-        private DataGridViewTextBoxColumn serviceId;
+        private DataGridViewTextBoxColumn note;
+        private DataGridViewTextBoxColumn paymentMethod;
+        private DataGridViewTextBoxColumn amountPaid;
+        private DataGridViewTextBoxColumn totalCost;
+        private BindingSource appointmentBindingSource;
+        private DataGridViewTextBoxColumn appointmentI;
+        private DataGridViewTextBoxColumn patientI;
+        private DataGridViewTextBoxColumn doctorI;
+        private DataGridViewTextBoxColumn serviceI;
+        private DataGridViewTextBoxColumn patientNam;
+        private DataGridViewTextBoxColumn doctorNam;
+        private DataGridViewTextBoxColumn serviceNam;
+        private DataGridViewTextBoxColumn statu;
+        private DataGridViewTextBoxColumn not;
+        private DataGridViewTextBoxColumn appointmentDat;
+        private DataGridViewTextBoxColumn totalCos;
+        private DataGridViewTextBoxColumn amountPai;
+        private DataGridViewTextBoxColumn paymentMetho;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }
