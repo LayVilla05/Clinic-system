@@ -17,25 +17,24 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using CrystalDecisions.Windows.Forms;
 
 namespace clinic
 {
     public partial class appiontmentManagement : Form
     {
         private readonly DataAccess _dataAccess = new DataAccess();
-        private PrintDocument printDocument = new PrintDocument();
-        private string reportContent = string.Empty;
+        public CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer;
+
         public appiontmentManagement()
         {
             InitializeComponent();
-            LoadIntoComboBox();
-            LoadAppointment();
             dataGridViewAppointment.SelectionChanged += dataGridViewAppointment_SelectionChanged;
-            generateReportButton.Click += GenerateReportButton_Click;
-            Controls.Add(patientNameTextBox);
-            Controls.Add(generateReportButton);
+            BtnReport.Click += BtnReport_Click;
         }
-
+      
 
         private void ClearFields()
         {
@@ -45,6 +44,10 @@ namespace clinic
             comboBoxDoctor.SelectedIndex = -1;
             comboBoxService.SelectedIndex = -1;
             noteText.Clear();
+            textBoxTotalCost.Clear();
+            textBoxAmountPaid.Clear();
+            comboBoxPaymentMethod.SelectedIndex = -1;
+            comboBoxStatus.SelectedIndex = 0;
 
         }
         private void LoadAppointment()
@@ -81,13 +84,6 @@ namespace clinic
             comboBoxService.DataSource = _dataAccess.GetServices();
             comboBoxService.DisplayMember = "serviceName";
             comboBoxService.ValueMember = "serviceId";
-
-            comboBoxPaymentMethod.Items.AddRange(new object[] { "Cash", "Credit Card", "Insurance" });
-            comboBoxPaymentMethod.SelectedIndex = -1;
-
-            comboBoxStatus.Items.AddRange(new object[] { "Checked In", "Completed", "Canceled", "Paid" });
-            comboBoxStatus.SelectedIndex = -1;
-
         }
 
         private void dtpAppointment_ValueChanged(object sender, EventArgs e)
@@ -121,6 +117,7 @@ namespace clinic
                 MessageBox.Show("Error loading doctors: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void dataGridViewAppointment_SelectionChanged(object sender, EventArgs e)
         {
@@ -178,7 +175,6 @@ namespace clinic
                 return;
             }
 
-            // Debugging: Check if the values are correctly parsed
             if (!int.TryParse(comboBoxPetient.SelectedValue?.ToString(), out int patientId))
             {
                 MessageBox.Show("Invalid patient selection.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -274,7 +270,6 @@ namespace clinic
                     return;
                 }
 
-                // Check if TotalCost is greater than AmountPaid
                 if (totalPaid > amountPaid)
                 {
                     MessageBox.Show("Total cost cannot be greater than the amount paid. Please enter a valid amount.", "Payment Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -305,8 +300,9 @@ namespace clinic
                     _dataAccess.UpdateAppointment(appointment);
                     _dataAccess.UpdatePayment(appointment);
                     MessageBox.Show("Appointment and Payment updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearFields();
                     LoadAppointment();
+                    ClearFields();
+                    
                 }
                 catch (Exception ex)
                 {
@@ -332,8 +328,9 @@ namespace clinic
                     {
                         _dataAccess.DeleteAppointment(appointmentId);
                         MessageBox.Show("Appointment deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        ClearFields();
                         LoadAppointment();
+                        ClearFields();
+                        
                     }
                     catch (Exception ex)
                     {
@@ -389,7 +386,9 @@ namespace clinic
         private void appiontmentManagement_Load(object sender, EventArgs e)
         {
             LoadIntoComboBox();
+            LoadAppointment();
             dtpAppointment.Value = DateTime.Now;
+            ClearFields();
         }
 
         private void comboBoxService_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -421,156 +420,78 @@ namespace clinic
             //    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //}
         }
-        public void GenerateReportContent(string patientName)
-        {
-            List<Appointment> appointments = _dataAccess.GetAppointmentsByPatientName(patientName);
-
-            if (appointments.Count == 0)
-            {
-                MessageBox.Show("No appointments found for the specified patient.", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            var sb = new StringBuilder();
-            sb.AppendLine("Appointment Report");
-            sb.AppendLine("Patient: " + patientName);
-            sb.AppendLine("Generated on: " + DateTime.Now.ToString());
-            sb.AppendLine();
-            sb.AppendLine("Appointment ID | Patient Name | Doctor Name | Service Name | Appointment Date | Total Cost | Amount Paid");
-            sb.AppendLine(new string('-', 100));
-
-            foreach (var appointment in appointments)
-            {
-                sb.AppendLine($"{appointment.AppointmentId} | {appointment.PatientName} | {appointment.DoctorName} | {appointment.ServiceName} | {appointment.AppointmentDate:yyyy-MM-dd HH:mm} | {appointment.TotalCost:C} | {appointment.AmountPaid:C}");
-            }
-
-            reportContent = sb.ToString();
-        }
-
-        private void PrintPreview()
-        {
-            printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
-            PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog
-            {
-                Document = printDocument,
-                Width = 800,
-                Height = 600
-            };
-            printPreviewDialog.ShowDialog();
-        }
-
-        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
-        {
-            e.Graphics.DrawString(reportContent, new System.Drawing.Font("Arial", 10), Brushes.Black, new RectangleF(10, 10, printDocument.DefaultPageSettings.PrintableArea.Width, printDocument.DefaultPageSettings.PrintableArea.Height));
-        }
-
-        private void ExportReportToPDF(string patientName)
+        private void LoadReport(int appointmentId)
         {
             try
             {
-                List<Appointment> appointments = _dataAccess.GetAppointmentsByPatientName(patientName);
-
-                if (appointments.Count == 0)
+                DataTable appointmentData = GetAppointmentData(appointmentId);
+                if (appointmentData.Rows.Count == 0)
                 {
-                    MessageBox.Show("No appointments found for the specified patient.", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("No data found for the selected appointment.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
-                // Create a document and set its properties
-                Document document = new Document();
-                string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AppointmentReport.pdf");
-                PdfWriter.GetInstance(document, new FileStream(filePath, FileMode.Create));
+                ReportDocument reportDoc = new ReportDocument();
+                string reportPath = Path.Combine(Application.StartupPath, "CrystalReport.rpt");
+                reportDoc.Load(reportPath);
+                reportDoc.SetDataSource(appointmentData);
+                AppointmentReport reportForm = new AppointmentReport();
 
-                // Open the document for writing
-                document.Open();
+                // Show the report form
+                reportForm.ShowDialog();
 
-                // Add title
-                document.Add(new Paragraph("Appointment Report"));
-                document.Add(new Paragraph("Patient: " + patientName));
-                document.Add(new Paragraph("Generated on: " + DateTime.Now.ToString()));
-                document.Add(new Paragraph(" ")); // Add a blank line
-
-                // Create a table with the appropriate number of columns
-                PdfPTable table = new PdfPTable(7);
-                table.WidthPercentage = 100;
-
-                // Add table headers
-                table.AddCell("Appointment ID");
-                table.AddCell("Patient Name");
-                table.AddCell("Doctor Name");
-                table.AddCell("Service Name");
-                table.AddCell("Appointment Date");
-                table.AddCell("Total Cost");
-                table.AddCell("Amount Paid");
-
-                // Add data to the table
-                foreach (var appointment in appointments)
-                {
-                    table.AddCell(appointment.AppointmentId.ToString());
-                    table.AddCell(appointment.PatientName);
-                    table.AddCell(appointment.DoctorName);
-                    table.AddCell(appointment.ServiceName);
-                    table.AddCell(appointment.AppointmentDate.ToString("yyyy-MM-dd HH:mm"));
-                    table.AddCell(appointment.TotalCost.ToString("C"));
-                    table.AddCell(appointment.AmountPaid.ToString("C"));
-                }
-
-                // Add table to document
-                document.Add(table);
-
-                // Close the document
-                document.Close();
-
-                MessageBox.Show("Report generated successfully! Saved at: " + filePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Open the generated PDF file with the default PDF viewer for printing
-                Process.Start(filePath);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error generating report: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loading report: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void PrintReport()
+        private DataTable GetAppointmentData(int appointmentId)
         {
-            using (PrintDialog printDialog = new PrintDialog())
+            DataTable dt = new DataTable();
+            string query = @"
+       SELECT a.appointmentId, p.firstName + ' ' + p.lastName AS PatientName, 
+               d.firstName + ' ' + d.lastName AS DoctorName,
+               s.ServiceName,
+               a.appointmentDate, py.AmountPaid, py.TotalCost, 
+               (py.AmountPaid - py.TotalCost) AS Change
+        FROM Appointments a
+        INNER JOIN Patients p ON a.patientId = p.patientId
+        INNER JOIN Services s ON a.serviceId = s.serviceId
+        INNER JOIN Doctors d ON a.doctorId = d.doctorId
+        LEFT JOIN Payments py ON a.appointmentId = py.appointmentId
+        WHERE a.appointmentId = @appointmentId";
+
+            using (SqlConnection conn = new SqlConnection(connection.Conn("clinic_db")))
             {
-                printDialog.Document = printDocument;
-                if (printDialog.ShowDialog() == DialogResult.OK)
-                {
-                    printDocument.Print();
-                }
+                conn.Open();
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                da.SelectCommand.Parameters.AddWithValue("@appointmentId", appointmentId);
+                da.Fill(dt);
             }
+
+            return dt;
         }
 
-        private void GenerateReportButton_Click(object sender, EventArgs e)
+
+        private void BtnReport_Click(object sender, EventArgs e)
         {
-            string patientName = searchPatient.Text;
-            GenerateReportContent(patientName);
-
-            // Show options to Print, Print Preview, or Export to PDF
-            DialogResult result = MessageBox.Show("Do you want to print the report?", "Print or Export", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            if (dataGridViewAppointment.SelectedRows.Count > 0)
             {
-                PrintReport();
+                int appointmentId = Convert.ToInt32(dataGridViewAppointment.SelectedRows[0].Cells["appointmentI"].Value);
+                LoadReport(appointmentId);
+                AppointmentReport apreport = new AppointmentReport();
+                apreport.ShowDialog();
             }
-            else if (result == DialogResult.No)
+            else
             {
-                ExportReportToPDF(patientName);
+                MessageBox.Show("Please select an appointment to generate the report.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            
         }
+        
 
-        // Add a text box for entering the patient name and a button to generate the report
-        private TextBox patientNameTextBox = new TextBox { Location = new Point(20, 20) };
-        private Button generateReportButton = new Button
-        {
-            Text = "Generate Report",
-            Location = new Point(200, 20)
-        };
-
-       
     }
 }
 

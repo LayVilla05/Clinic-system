@@ -207,7 +207,8 @@
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(458, 12);
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(531, 12);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(226, 39);
             this.guna2HtmlLabel1.TabIndex = 24;
@@ -297,7 +298,7 @@
             this.dataGridViewPatients.AllowUserToAddRows = false;
             this.dataGridViewPatients.AllowUserToDeleteRows = false;
             this.dataGridViewPatients.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Silver;
@@ -507,6 +508,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "petientsManagerment";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.guna2Panel1.ResumeLayout(false);
@@ -559,6 +561,7 @@
         private System.DirectoryServices.DirectorySearcher directorySearcher1;
         private Guna.UI2.WinForms.Guna2TextBox searchText;
         private Guna.UI2.WinForms.Guna2Button search;
+        private Guna.UI2.WinForms.Guna2DataGridViewStyler guna2DataGridViewStyler1;
     }
 }
 

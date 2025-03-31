@@ -16,7 +16,7 @@ namespace clinic
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new doctorsManagerment());
+            Application.Run(new LoginForm());
         }
     }
 }

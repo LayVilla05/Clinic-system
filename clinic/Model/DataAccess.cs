@@ -69,16 +69,16 @@ namespace clinic.Model
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "UPDATE staff SET Name = @Name , Password = @Password , Role = @Role";
+                string sql = "UPDATE staff SET Name = @Name , Password = @Password , Role = @Role WHERE id = @id";
                 db.Execute(sql, staff);
             }
         }   
-        public void DeleteStaff(int Id)
+        public void DeleteStaff(int id)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "DELETE FROM staff WHERE Id = @Id";
-                db.Execute(sql, new { id = Id });
+                string sql = "DELETE FROM staff WHERE Id = @id";
+                db.Execute(sql, new { id = id });
             }
         }
 
@@ -107,7 +107,7 @@ namespace clinic.Model
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "UPDATE doctors SET FirstName = @FirstName, LastName = @LastName, Specialization = @Specialization, Phone = @Phone, WHERE DoctorId = @DoctorId";
+                string sql = "UPDATE doctors SET FirstName = @FirstName, LastName = @LastName, Specialization = @Specialization, Phone = @Phone WHERE DoctorId = @DoctorId";
                 db.Execute(sql, doctor);
             }
         }
@@ -126,6 +126,27 @@ namespace clinic.Model
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
                 string sql = "SELECT * FROM doctors";
+                return db.Query<Doctors>(sql).AsList();
+            }
+        }
+
+        public List<Doctors> GetDoctor()
+        {
+            using(IDbConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = @"SELECT 
+                    d.DoctorId,
+                    d.FirstName,
+                    d.LastName,
+                    d.phone,
+                    d.specialization,
+                    da.availableDay,
+                    da.StartTime,
+                    da.EndTime
+                FROM 
+                    Doctors d
+                INNER JOIN 
+                    doctor_availability da ON d.DoctorId = da.DoctorId";
                 return db.Query<Doctors>(sql).AsList();
             }
         }
@@ -161,14 +182,40 @@ namespace clinic.Model
 
             return dataTable;
         }
+        public List<Doctors> GetAvailableDoctors(int serviceId, DateTime selectedDate)
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                // SQL query to fetch available doctors for the selected service and date
+                string sqlQuery = @"
+                    SELECT d.*
+                    FROM Doctors d
+                    INNER JOIN Services ds ON d.DoctorId = ds.DoctorId
+                    WHERE ds.ServiceId = @ServiceId
+                    AND d.DoctorId NOT IN (
+                        SELECT a.DoctorId
+                        FROM Appointments a
+                        WHERE CAST(a.AppointmentDate AS DATE) = CAST(@SelectedDate AS DATE)
+                    )";
+
+                var availableDoctors = db.Query<Doctors>(sqlQuery, new { ServiceId = serviceId, SelectedDate = selectedDate }).ToList();
+
+                if (availableDoctors == null)
+                {
+                    availableDoctors = new List<Doctors>();
+                }
+
+                return availableDoctors;
+            }
+        }
 
 
 
 
 
-        //available Docotor
+            //available Docotor
 
-        public void AddAvailable (DoctorAvailable doctorAvailable)
+         public void AddAvailable (DoctorAvailable doctorAvailable)
         {
             using (IDbConnection db  = new SqlConnection(_connectionString))
             {
@@ -203,42 +250,40 @@ namespace clinic.Model
                 return db.Query<DoctorAvailable>(query).ToList();
             }
         }
-
-
-
-        public List<Doctors> GetAvailableDoctors(int serviceId, DateTime selectedDate)
+        public List<DoctorAvailable> GetDoctorAvailabilities()
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                // SQL query to fetch available doctors for the selected service and date
                 string sqlQuery = @"
-                    SELECT d.*
-                    FROM Doctors d
-                    INNER JOIN Services ds ON d.DoctorId = ds.DoctorId
-                    WHERE ds.ServiceId = @ServiceId
-                    AND d.DoctorId NOT IN (
-                        SELECT a.DoctorId
-                        FROM Appointments a
-                        WHERE CAST(a.AppointmentDate AS DATE) = CAST(@SelectedDate AS DATE)
-                    )";
+                SELECT 
+                    d.DoctorId,
+                    d.FirstName,
+                    d.LastName,
+                    d.phone,
+                    d.specialization,
+                    da.availableDay,
+                    da.StartTime,
+                    da.EndTime
+                FROM 
+                    Doctors d
+                INNER JOIN 
+                    doctor_availability da ON d.DoctorId = da.DoctorId";
 
-                var availableDoctors = db.Query<Doctors>(sqlQuery, new { ServiceId = serviceId, SelectedDate = selectedDate }).ToList();
-
-                if (availableDoctors == null)
-                {
-                    availableDoctors = new List<Doctors>();
-                }
-
-                return availableDoctors;
+                return db.Query<DoctorAvailable>(sqlQuery).ToList();
             }
         }
 
+        public List<DoctorAvailable> GetDoctorAvailable()
+        {
+            using(IDbConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "SELECT * FROM doctor_availability";
+                return db.Query<DoctorAvailable>(sql).ToList();
+            }
+        }
 
-
-
-
-        //service 
-        public void AddService(Services service)
+            //service 
+         public void AddService(Services service)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
@@ -320,6 +365,7 @@ namespace clinic.Model
                 db.Execute(sql, appointment);
             }
         }
+        
 
 
         public void DeleteAppointment(int appiontmentId)
@@ -408,6 +454,16 @@ namespace clinic.Model
                 WHERE AppointmentId = @AppointmentId;";
 
                 db.Execute(sql, appointment);
+            }
+        }
+
+        public List<Payment> GetRevenue()
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "SELECT SUM(totalCost) FROM Payments ";
+                var result = db.Query<Payment>(sql).ToList();
+                return result;
             }
         }
         public int InsertAppointment(int patientId, int doctorId, int serviceId, DateTime appointmentDateTime, string status, string notes, decimal totalCost, decimal amountPaid, string paymentMethod)

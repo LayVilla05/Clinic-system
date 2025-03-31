@@ -22,6 +22,7 @@ namespace clinic
             LoadDoctors();
             LoadDoctorsAvailable();
             dataGridViewDoctors.SelectionChanged += DataGridViewDoctors_SelectionChanged;
+            ClearFields();
         }
 
        
@@ -46,6 +47,7 @@ namespace clinic
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
@@ -74,7 +76,9 @@ namespace clinic
                 {
                     MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                
             }
+            
             else
             {
                 MessageBox.Show("Please select a doctor to update.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -101,6 +105,7 @@ namespace clinic
                     {
                         MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    
                 }
             }
             else
@@ -115,35 +120,24 @@ namespace clinic
         }
         private void LoadDoctorsAvailable()
         {
-            try
-            {
-                string query = @"
-                    SELECT d.doctorID, d.firstName, d.lastName, d.specialization, d.phone, 
-                           da.startTime, da.endTime
-                    FROM doctors d
-                    LEFT JOIN doctor_availability da ON d.doctorID = da.doctorID";
-                List<DoctorAvailable> doctorAvailables = _dataAccess.GetDoctorsWithAvailability(query);
-                dataGridViewDoctors.DataSource = null;
-                dataGridViewDoctors.DataSource = doctorAvailables;
-                dataGridViewDoctors.Refresh();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading doctors: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //try
+            //{
+            //    List<DoctorAvailable> doctorAvailables = _dataAccess.GetDoctorAvailabilities();
+            //    dataGridViewDoctors.DataSource = null;
+            //    dataGridViewDoctors.DataSource = doctorAvailables;
+            //    dataGridViewDoctors.Refresh();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error loading doctors: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void LoadDoctors()
         {
             try
             {
-                List<Doctors> doctors = _dataAccess.GetDoctors();
-                foreach (var doc in doctors)
-                {
-                    Console.WriteLine($"Doctor: {doc.FirstName} {doc.LastName} - StartTime: {doc.StartTime}, EndTime: {doc.EndTime}");
-                }
-
-                dataGridViewDoctors.DataSource = doctors;
+                List<Doctors> doctors = _dataAccess.GetDoctor();
                 dataGridViewDoctors.DataSource = null;
                 dataGridViewDoctors.DataSource = doctors;
                 dataGridViewDoctors.Refresh();
@@ -163,26 +157,9 @@ namespace clinic
                 lastNameText.Text = selectedRow.Cells["lastName"].Value?.ToString();
                 specializationText.Text = selectedRow.Cells["specialization"].Value?.ToString() ?? "";
                 phoneText.Text = selectedRow.Cells["phone"].Value?.ToString() ?? "";
+               
             }
         }
-        //private void ManageDoctor_Load(object sender, EventArgs e)
-        //{
-        //    dataGridViewDoctors.AutoGenerateColumns = false;
-        //    dataGridViewDoctors.Columns.Clear();
-
-        //    dataGridViewDoctors.Columns.Add(new DataGridViewTextBoxColumn { Name = "DoctorId", DataPropertyName = "doctorID", HeaderText = "ID" });
-        //    dataGridViewDoctors.Columns.Add(new DataGridViewTextBoxColumn { Name = "FirstName", DataPropertyName = "firstName", HeaderText = "First Name" });
-        //    dataGridViewDoctors.Columns.Add(new DataGridViewTextBoxColumn { Name = "LastName", DataPropertyName = "lastName", HeaderText = "Last Name" });
-        //    dataGridViewDoctors.Columns.Add(new DataGridViewTextBoxColumn { Name = "Specialization", DataPropertyName = "specialization", HeaderText = "Specialization" });
-        //    dataGridViewDoctors.Columns.Add(new DataGridViewTextBoxColumn { Name = "Phone", DataPropertyName = "phone", HeaderText = "Phone" });
-        //    dataGridViewDoctors.Columns.Add(new DataGridViewTextBoxColumn { Name = "StartTime", DataPropertyName = "StartTime", HeaderText = "Start Time" });
-        //    dataGridViewDoctors.Columns.Add(new DataGridViewTextBoxColumn { Name = "EndTime", DataPropertyName = "EndTime", HeaderText = "End Time" });
-
-        //    LoadDoctors();
-        
-        //}
-
-
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearFields();
@@ -213,6 +190,17 @@ namespace clinic
         {
             availableDoctor ad = new availableDoctor();
             ad.ShowDialog();
+        }
+
+        private void dataGridViewDoctors_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void doctorsManagerment_Load(object sender, EventArgs e)
+        {
+            LoadDoctors();
+            ClearFields();
         }
     }
 

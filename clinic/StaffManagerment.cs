@@ -143,12 +143,78 @@ namespace clinic
             das.Show();
             this.Hide();
         }
+        private void ClearFields()
+        {
+            NameTexts.Text = "";
+            RoleCombo.Text = "";
+            PassText.Text = "";
+            ProfilePictureBox.Image = null;
+        }
 
-        
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            ClearFields();
+        }   
+
+
 
         private void StaffManagerment_Load(object sender, EventArgs e)
         {
             LoadStaff();
+            ClearFields();
+
+        }
+
+        private void ClearBtn_Click(object sender, EventArgs e)
+        {
+            ClearFields();
+        }
+
+        private void UpdateBtn_Click(object sender, EventArgs e)
+        {
+            if (DgvStaff.SelectedRows.Count > 0)
+            {
+                var selectedRow = DgvStaff.SelectedRows[0];
+                var staff = new Staff
+                {
+                    Id = Convert.ToInt32(selectedRow.Cells["Id"].Value),
+                    Name = NameTexts.Text,
+                    Password = PassText.Text,
+                    Role = RoleCombo.Text,
+                    Image = ProfilePictureBox.Tag?.ToString()
+                };
+
+                try
+                {
+                    _dataAccess.UpdateStaff(staff);
+                    MessageBox.Show("Staff updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadStaff();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+           
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            if(DgvStaff.SelectedRows.Count > 0)
+            {
+                int id = Convert.ToInt32(DgvStaff.SelectedRows[0].Cells["id"].Value);
+                var confirmResult = MessageBox.Show("Are you sure you want to delete this staff?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                try
+                {
+                    _dataAccess.DeleteStaff(id);
+                    MessageBox.Show("Staff deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show("Error Delete staff: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

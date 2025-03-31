@@ -48,8 +48,8 @@
             this.BtnClear = new Guna.UI2.WinForms.Guna2Button();
             this.DvgAvailableDoctor = new Guna.UI2.WinForms.Guna2DataGridView();
             this.availableId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.availableDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doctorId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.availableDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doctorAvailableBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -280,8 +280,8 @@
             this.DvgAvailableDoctor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.DvgAvailableDoctor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.availableId,
-            this.availableDay,
             this.doctorId,
+            this.availableDay,
             this.startTime,
             this.endTime});
             this.DvgAvailableDoctor.DataSource = this.doctorAvailableBindingSource;
@@ -329,19 +329,19 @@
             this.availableId.HeaderText = "Available Id";
             this.availableId.Name = "availableId";
             // 
-            // availableDay
-            // 
-            this.availableDay.DataPropertyName = "AvailableDay";
-            this.availableDay.FillWeight = 48.85786F;
-            this.availableDay.HeaderText = "Day";
-            this.availableDay.Name = "availableDay";
-            // 
             // doctorId
             // 
             this.doctorId.DataPropertyName = "DoctorId";
             this.doctorId.FillWeight = 48.85786F;
             this.doctorId.HeaderText = "Doctor";
             this.doctorId.Name = "doctorId";
+            // 
+            // availableDay
+            // 
+            this.availableDay.DataPropertyName = "AvailableDay";
+            this.availableDay.FillWeight = 48.85786F;
+            this.availableDay.HeaderText = "Day";
+            this.availableDay.Name = "availableDay";
             // 
             // startTime
             // 
@@ -385,6 +385,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "availableDoctor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "availableDoctor";
             this.Load += new System.EventHandler(this.availableDoctor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DvgAvailableDoctor)).EndInit();
@@ -411,11 +412,11 @@
         private Guna.UI2.WinForms.Guna2Button BtnExit;
         private Guna.UI2.WinForms.Guna2Button BtnClear;
         private Guna.UI2.WinForms.Guna2DataGridView DvgAvailableDoctor;
+        private System.Windows.Forms.BindingSource doctorAvailableBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn availableId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn availableDay;
         private System.Windows.Forms.DataGridViewTextBoxColumn doctorId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn availableDay;
         private System.Windows.Forms.DataGridViewTextBoxColumn startTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn endTime;
-        private System.Windows.Forms.BindingSource doctorAvailableBindingSource;
     }
 }

@@ -85,11 +85,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.ForeColor = System.Drawing.Color.Aqua;
-            this.label1.Location = new System.Drawing.Point(490, 30);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(254)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Location = new System.Drawing.Point(473, 21);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 24);
+            this.label1.Size = new System.Drawing.Size(218, 39);
             this.label1.TabIndex = 1;
             this.label1.Text = "Manage Staff";
             // 
@@ -200,6 +201,7 @@
             this.UpdateBtn.Size = new System.Drawing.Size(116, 46);
             this.UpdateBtn.TabIndex = 9;
             this.UpdateBtn.Text = "Update";
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
             // DeleteBtn
             // 
@@ -215,6 +217,7 @@
             this.DeleteBtn.Size = new System.Drawing.Size(116, 46);
             this.DeleteBtn.TabIndex = 10;
             this.DeleteBtn.Text = "Delete";
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // ClearBtn
             // 
@@ -230,6 +233,7 @@
             this.ClearBtn.Size = new System.Drawing.Size(116, 46);
             this.ClearBtn.TabIndex = 11;
             this.ClearBtn.Text = "Clear";
+            this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
             // 
             // DgvStaff
             // 
@@ -413,6 +417,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "StaffManagerment";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StaffManagerment";
             this.Load += new System.EventHandler(this.StaffManagerment_Load);
             this.guna2Panel1.ResumeLayout(false);

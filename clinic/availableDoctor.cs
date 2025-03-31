@@ -21,6 +21,7 @@ namespace clinic
         private void availableDoctor_Load(object sender, EventArgs e)
         {
             LoadDoctorsIntoComboBox();
+            LoadAvailable();
             DvgAvailableDoctor.SelectionChanged += DvgAvailableDoctor_SelectionChanged;
         }
 
@@ -40,23 +41,14 @@ namespace clinic
             }
         }
 
-        private void LoadAvailable(int serviceId, DateTime selectedDate)
+        private void LoadAvailable()
         {
             try
             {
-                List<Doctors> availableDoctors = _dataAccess.GetAvailableDoctors(serviceId, selectedDate);
-
-                if (availableDoctors == null || availableDoctors.Count == 0)
-                {
-                    MessageBox.Show("No doctors available for the selected service and date.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    comboBoxDoctor.DataSource = null;
-                    return;
-                }
-
-                comboBoxDoctor.DataSource = availableDoctors;
-                comboBoxDoctor.DisplayMember = "FirstName";
-                comboBoxDoctor.ValueMember = "DoctorId";
-                comboBoxDoctor.SelectedIndex = availableDoctors.Count > 0 ? 0 : -1;
+                List<DoctorAvailable> availableDoctors = _dataAccess.GetDoctorAvailable();
+                DvgAvailableDoctor.DataSource = null;
+                DvgAvailableDoctor.DataSource = availableDoctors;
+              
             }
             catch (Exception ex)
             {
@@ -90,7 +82,8 @@ namespace clinic
             {
                 _dataAccess.AddAvailable(doctorAvailabel);
                 MessageBox.Show("added success.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-              
+                LoadAvailable();
+                Clear();
 
             }
             catch (Exception ex)
@@ -118,7 +111,9 @@ namespace clinic
                 {
                     _dataAccess.UpdateAvailable(doctorAvailable);
                     MessageBox.Show(" updated Success.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                   
+                    LoadAvailable();
+                    Clear();
+
                 }
 
                 catch(Exception ex)
@@ -147,7 +142,8 @@ namespace clinic
                     {
                         _dataAccess.DeleteAvailable(availableId);
                         MessageBox.Show(" Deleted Success.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                       
+                        LoadAvailable();
+                        Clear();
                     }
                     catch (Exception ex)
                     {
@@ -171,10 +167,10 @@ namespace clinic
         {
             if (DvgAvailableDoctor.SelectedRows.Count > 0)
             {
-                DataGridViewRow row = DvgAvailableDoctor.SelectedRows[0];
+               var row = DvgAvailableDoctor.SelectedRows[0];
 
                 comboBoxDoctor.SelectedValue = Convert.ToInt32(row.Cells["DoctorId"].Value);
-                dayText.Text = row.Cells["AvailableDay"].Value.ToString();
+                dayText.Text = row.Cells["AvailableDay"].Value.ToString()?? "";
                 startTimeText.Text = TimeSpan.Parse(row.Cells["StartTime"].Value.ToString()).ToString(@"hh\:mm");
                 endTimeText.Text = TimeSpan.Parse(row.Cells["EndTime"].Value.ToString()).ToString(@"hh\:mm");
             }

@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using MetroFramework.Forms;
+
 
 namespace clinic
 {
@@ -21,10 +23,28 @@ namespace clinic
             InitializeComponent();
             LoadTotalPatient();
             LoadTotalDoctor();
+            LoadTotalRevenue();
+
         }
         private void Dashboard_Load(object sender, EventArgs e)
         {
             ApplyRolePermissions();
+            InitializeChart();
+        }
+
+        private void InitializeChart()
+        {
+            chart.Series.Clear();
+            Series series = new Series("Data")
+            {
+                ChartType = SeriesChartType.Column
+            };
+            series.Points.AddXY("Category 1", 10);
+            series.Points.AddXY("Category 2", 20);
+            series.Points.AddXY("Category 3", 30);
+            chart.Series.Add(series);
+
+
         }
         private void LoadTotalPatient()
         {
@@ -42,42 +62,26 @@ namespace clinic
         {
             try
             {
-                List<Doctors> TotalDoctor = _dataAccess.GetDoctors();
-                totalDoctorText.Text = TotalDoctor.Count.ToString();
+                List<DoctorAvailable> Doctor = _dataAccess.GetDoctorAvailable();
+                totalDoctorText.Text = Doctor.Count.ToString();
             }
             catch (Exception ex) 
             {
                 MessageBox.Show("Error loading doctors: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
-
-        private void AppiontmentBtn_Click(object sender, EventArgs e)
+        private void LoadTotalRevenue()
         {
-            appiontmentManagement ap = new appiontmentManagement();   
-            ap.Show();
-            this.Hide();
-        }
-
-        private void ServiceBtn_Click(object sender, EventArgs e)
-        {
-            serviceManagerment ser = new serviceManagerment();
-            ser.Show();
-            this.Hide();
-        }
-
-        private void PatientBtn_Click(object sender, EventArgs e)
-        {
-            petientsManagerment pet = new petientsManagerment();
-            pet.Show();
-            this.Hide();
-        }
-
-        private void DoctorBtn_Click(object sender, EventArgs e)
-        {
-            doctorsManagerment doc = new doctorsManagerment();
-            doc.Show();
-            this.Hide();
+            string sql = "SELECT SUM(totalCost) FROM Payments";
+            try
+            {
+                DataTable dt = _dataAccess.GetDataTable(sql);
+                totalRevenueText.Text = dt.Rows[0][0].ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading revenue: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void logoutBtn_Click(object sender, EventArgs e)
@@ -91,25 +95,57 @@ namespace clinic
         {
             if (LoginForm.LoggedInUserRole == "staff")
             {
-                DoctorBtn.Enabled = false; 
-                DoctorBtn.Visible = false;
-                StaffBtn.Enabled = false;
-                StaffBtn.Visible = false;
+                BtnDoctor.Enabled = false; 
+                BtnDoctor.Visible = false;
+                BtnStaff.Enabled = false;
+                BtnStaff.Visible = false;
             }
             else if (LoginForm.LoggedInUserRole == "admin")
             {
                
-                DoctorBtn.Enabled = true;
-                StaffBtn.Enabled=true;
+                BtnDoctor.Enabled = true;
+                BtnStaff.Enabled=true;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+          
+        }
+
+        private void BtnAppointment_Click(object sender, EventArgs e)
+        {
+            appiontmentManagement ap = new appiontmentManagement();
+            ap.Show();
+            this.Hide();
+        }
+
+        private void BtnDoctor_Click(object sender, EventArgs e)
+        {
+            doctorsManagerment doc = new doctorsManagerment();
+            doc.Show();
+            this.Hide();
+        }
+
+        private void BtnPatients_Click(object sender, EventArgs e)
+        {
+            petientsManagerment pet = new petientsManagerment();
+            pet.Show();
+            this.Hide();
+        }
+
+        private void BtnServices_Click(object sender, EventArgs e)
+        {
+            serviceManagerment ser = new serviceManagerment();
+            ser.Show();
+            this.Hide();
+        }
+
+        private void BtnStaff_Click(object sender, EventArgs e)
+        {
             StaffManagerment staff = new StaffManagerment();
             staff.Show();
             this.Hide();
-            
         }
     }
 }
